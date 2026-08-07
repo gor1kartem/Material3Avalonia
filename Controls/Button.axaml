@@ -17,6 +17,8 @@
     
     <SolidColorBrush Color="{DynamicResource OnSurface}" Opacity="0.1" x:Key="DisabledBorderBrush"></SolidColorBrush>
     <SolidColorBrush Color="{DynamicResource OnSurface}" Opacity="0.38" x:Key="DisabledTextBrush"></SolidColorBrush>
+    
+    <ControlTheme x:Key="{x:Type Button}" TargetType="Button" BasedOn="{StaticResource FilledButton}">
     <ControlTheme x:Key="MaterialButtonBase" TargetType="Button">
         <Setter Property="VerticalAlignment" Value="Center"></Setter>
         <Setter Property="HorizontalAlignment" Value="Left"></Setter>
@@ -87,7 +89,6 @@
                 <Setter Property="Background" Value="{DynamicResource OnPrimary}"></Setter>
         </Style>
     </ControlTheme>
-    <ControlTheme x:Key="{x:Type Button}" TargetType="Button" BasedOn="{StaticResource FilledButton}">
 
     </ControlTheme>
     <ControlTheme x:Key="FilledTonalButton" TargetType="Button" BasedOn="{StaticResource MaterialButtonBase}">
