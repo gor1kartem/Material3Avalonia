@@ -1,0 +1,44 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:settings="clr-namespace:MaterialTheme.CustomControls.Settings">
+    <Design.PreviewWith>
+        <Border Width="800" Height="450">
+            <StackPanel>
+            <settings:SettingsItem Label="Directory settings" Description="Output folder"></settings:SettingsItem>
+                
+                <settings:SettingsItem Label="Directory settings" Description="Output folder"></settings:SettingsItem>
+            <settings:SettingsItem Label="Directory settings" Description="Output folder">
+                <ToggleSwitch></ToggleSwitch>
+            </settings:SettingsItem>
+                
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+
+    <ControlTheme x:Key="{x:Type settings:SettingsItem}" TargetType="settings:SettingsItem">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border ClipToBounds="True" CornerRadius="{TemplateBinding CornerRadius}" Background="{TemplateBinding Background}">
+                    <Panel>
+                        <Border x:Name="PART_StateLayer" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Opacity="0.08"></Border>
+                        <Grid ColumnDefinitions="40, *, Auto" RowDefinitions="Auto, Auto" ColumnSpacing="12" Margin="16, 16, 16, 16">
+                            <ContentPresenter Content="{TemplateBinding Icon}" Grid.RowSpan="2" VerticalAlignment="Center"></ContentPresenter>
+                            <StackPanel Grid.Column="1" Grid.RowSpan="2" VerticalAlignment="Center">
+                                <TextBlock Text="{TemplateBinding Label}" FontSize="16" FontWeight="Medium" Foreground="{TemplateBinding Foreground}"></TextBlock>
+                                <TextBlock Text="{TemplateBinding Description}" LineHeight="16" FontSize="14" Foreground="{TemplateBinding Foreground}"></TextBlock>
+                            </StackPanel>
+                            <ContentPresenter Content="{TemplateBinding Content}" Grid.Column="2" Grid.RowSpan="2" VerticalAlignment="Center" x:Name="PART_ContentPresenter"></ContentPresenter>
+                        </Grid>
+                    </Panel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+        <Setter Property="Background" Value="{DynamicResource Surface}"></Setter>
+        <Setter Property="Foreground" Value="{DynamicResource OnSurface}"></Setter>
+        <Style Selector="^:pointerover /template/ Border#PART_StateLayer">
+            <Setter Property="Background" Value="{DynamicResource OnSurface}">
+            </Setter>
+        </Style>
+        
+    </ControlTheme>
+</ResourceDictionary>

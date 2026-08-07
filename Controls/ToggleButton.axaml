@@ -1,0 +1,77 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+    </Design.PreviewWith>
+    <ControlTheme x:Key="ToggleButtonBase" TargetType="ToggleButton">
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+        <Setter Property="Foreground" Value="{DynamicResource Primary}"></Setter>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="Padding" Value="24,0,24,0"></Setter>
+        <Setter Property="CornerRadius" Value="25"></Setter>
+        <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+        <Setter Property="MinHeight" Value="40"></Setter>
+        <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+        <Setter Property="Background" Value="{DynamicResource SurfaceContainerLow}"></Setter>
+        <Setter Property="Transitions">
+            <Transitions>
+                <CornerRadiusTransition Property="CornerRadius" Easing="{StaticResource StandardFastSpacialEasing}" Duration="0:0:0.350"></CornerRadiusTransition>
+                <BrushTransition Duration="0.150" Property="Background"></BrushTransition>
+                <BrushTransition Duration="0.150" Property="Foreground"></BrushTransition>
+            </Transitions>
+        </Setter>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <ContentPresenter x:Name="PART_ContentPresenter"
+                                  Content="{TemplateBinding Content}"
+                                  Padding="{TemplateBinding Padding}"
+                                  ContentTemplate="{TemplateBinding ContentTemplate}"
+                                  RecognizesAccessKey="True"
+                                  HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" 
+                                  Background="{TemplateBinding Background}" 
+                                  CornerRadius="{TemplateBinding CornerRadius}"
+                                  BorderBrush="{TemplateBinding BorderBrush}"
+                                  BorderThickness="{TemplateBinding BorderThickness}"/>
+
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^:checked">
+            <Setter Property="CornerRadius" Value="12"></Setter>
+        </Style>
+        <Style Selector="^:pressed">
+            <Setter Property="CornerRadius" Value="8"></Setter>
+        </Style>
+    </ControlTheme>
+    
+    <ControlTheme BasedOn="{StaticResource ToggleButtonBase}" x:Key="Filled" TargetType="ToggleButton">
+        <Style Selector="^:unchecked">
+            <Setter Property="Background" Value="{DynamicResource SurfaceContainer}"></Setter>
+            <Setter Property="Foreground" Value="{DynamicResource OnSurfaceVariant}"></Setter>
+        </Style>
+        <Style Selector="^:checked">
+            <Setter Property="Background" Value="{DynamicResource Primary}"></Setter>
+            <Setter Property="Foreground" Value="{DynamicResource OnPrimary}"></Setter>
+        </Style>
+        <Style Selector="^:pressed">
+            <Setter Property="Background" Value="{DynamicResource Primary}"></Setter>
+            <Setter Property="Foreground" Value="{DynamicResource OnPrimary}"></Setter>
+        </Style>
+    </ControlTheme>
+    <ControlTheme BasedOn="{StaticResource Filled}" x:Key="{x:Type ToggleButton}" TargetType="ToggleButton"></ControlTheme>
+    
+    <ControlTheme BasedOn="{StaticResource ToggleButtonBase}" x:Key="Transparent" TargetType="ToggleButton">
+        <Style Selector="^:unchecked">
+            <Setter Property="Background" Value="Transparent"></Setter>
+            <Setter Property="Foreground" Value="{DynamicResource OnSurfaceVariant}"></Setter>
+        </Style>
+        <Style Selector="^:checked">
+            <Setter Property="Background" Value="Transparent"></Setter>
+            <Setter Property="Foreground" Value="{DynamicResource OnPrimary}"></Setter>
+        </Style>
+        <Style Selector="^:pressed">
+            <Setter Property="Background" Value="Transparent"></Setter>
+            <Setter Property="Foreground" Value="{DynamicResource OnPrimary}"></Setter>
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

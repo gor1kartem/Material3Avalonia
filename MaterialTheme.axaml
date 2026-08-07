@@ -1,0 +1,22 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="MaterialTheme.MaterialTheme">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <!-- Add Controls for Previewer Here -->
+        </Border>
+    </Design.PreviewWith>
+
+    <Styles.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceInclude Source="Accents/ColorPalette.axaml"></ResourceInclude>
+                <ResourceInclude Source="Resources/StateLayer.axaml"></ResourceInclude>
+                <ResourceInclude Source="Animations/Easings.axaml"></ResourceInclude>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+        <FontFamily x:Key="MaterialSymbols" >avares://MaterialTheme/Resources#Material Symbols Rounded</FontFamily>
+    </Styles.Resources>
+    
+    <StyleInclude Source="MaterialControls.axaml"></StyleInclude>
+</Styles>

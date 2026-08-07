@@ -1,0 +1,13 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <SplineEasing X1="0.2" Y1="0.0" X2="0.0" Y2="1.0" x:Key="StandardEasing"></SplineEasing>
+    <SplineEasing X1="0.4" Y1="0.0" X2="0.2" Y2="1.0" x:Key="IndeterminateEasing"></SplineEasing>
+    <SplineEasing X1="0.31" Y1="0.94" X2="0.34" Y2="1.0" x:Key="ExpressiveFastEffectsEasing"></SplineEasing>
+    <SplineEasing X1="0.34" Y1="0.80" X2="0.34" Y2="1.0" x:Key="ExpressiveDefaultEffectsEasing"></SplineEasing>
+    <SplineEasing X1="0.27" Y1="1.06" X2="0.18" Y2="1.0" x:Key="StandardFastSpacialEasing"></SplineEasing>
+    <SplineEasing X1="0.31" Y1="0.94" X2="0.34" Y2="1.0" x:Key="StandardFastEffectsEasing"></SplineEasing>
+    <SplineEasing X1="0.42" Y1="1.67" X2="0.21" Y2="0.90" x:Key="ExpressiveFastSpacialEasing"></SplineEasing>
+    <SplineEasing X1="0.05" Y1="0.7" X2="0.1" Y2="1.1" x:Key="EmphasizedDecelerate"></SplineEasing>
+    <SplineEasing X1="0.3" Y1="0.0" X2="0.8" Y2="0.15" x:Key="EmphasizedAccelerate"></SplineEasing>
+    <SplineEasing X1="0.4" Y1="0.0" X2="0.2" Y2="1" x:Key="FastOutSlowInEasing"></SplineEasing>
+</ResourceDictionary>

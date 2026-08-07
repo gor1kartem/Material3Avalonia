@@ -1,0 +1,72 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <PackageId>MaterialThemeAvalonia</PackageId>
+        <Version>0.1</Version>
+        <Title>Material 3 theme for Avalonia</Title>
+        <Authors>gor1kartem</Authors>
+        <Description>Material 3 theme for Avalonia</Description>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Avalonia" Version="12.0.4" />
+      <PackageReference Include="Avalonia.Desktop" Version="12.0.4" />
+      <PackageReference Include="Avalonia.Markup.Xaml.Loader" Version="12.0.4" />
+      <PackageReference Include="Avalonia.Skia" Version="12.0.4" />
+      <PackageReference Include="Avalonia.Themes.Simple" Version="12.0.4" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <AdditionalFiles Include="Animations\Easing.axaml" />
+      <AdditionalFiles Include="Controls\Button.axaml" />
+      <AdditionalFiles Include="Controls\Checkbox.axaml" />
+      <AdditionalFiles Include="Controls\ContentPage.axaml" />
+      <AdditionalFiles Include="Controls\ListBox.axaml" />
+      <AdditionalFiles Include="Controls\NavigationPage.axaml" />
+      <AdditionalFiles Include="Controls\ProgressBar.axaml" />
+      <AdditionalFiles Include="Controls\RadioButton.axaml" />
+      <AdditionalFiles Include="Controls\Slider.axaml" />
+      <AdditionalFiles Include="Controls\TabItem.axaml" />
+      <AdditionalFiles Include="Controls\TextBox.axaml" />
+      <AdditionalFiles Include="Controls\ToggleButton.axaml" />
+      <AdditionalFiles Include="Controls\ToggleSwitch.axaml" />
+      <AdditionalFiles Include="CustomControls\ButtonGroup.axaml" />
+      <AdditionalFiles Include="CustomControls\MaterialExpander.axaml" />
+      <AdditionalFiles Include="CustomControls\Settings\SettingsItem.axaml" />
+      <AdditionalFiles Include="Theme\MaterialControls.axaml" />
+      <AdditionalFiles Include="Theme\MaterialTheme.axaml" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Theme\CustomControls\Dialog.axaml.cs">
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Theme\CustomControls\SettingsControls\SettingsItem.axaml.cs">
+        <DependentUpon>SettingsItem.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="MaterialTheme.axaml.cs">
+        <SubType>Code</SubType>
+        <DependentUpon>MaterialTheme.axaml</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <UpToDateCheckInput Remove="CustomControls\CircleTest.axaml" />
+      <UpToDateCheckInput Remove="CustomControls\CircularProgress.axaml" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Assets\" />
+      <Folder Include="Converters\" />
+      <Folder Include="Theme\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <AvaloniaResource Include="Resources\MaterialSymbolsRounded[FILL,GRAD,opsz,wght].ttf" />
+    </ItemGroup>
+
+</Project>
