@@ -29,14 +29,13 @@
         </Style>
     </ControlTheme>
     <ControlTheme x:Key="{x:Type Slider}" TargetType="Slider">
+        <Setter Property="Background" Value="{DynamicResource SecondaryContainer}"></Setter>
+        <Setter Property="Foreground" Value="{DynamicResource Primary}"></Setter>
         <Style Selector="^:horizontal">
             <Setter Property="Template">
                 <ControlTemplate>
                     <DataValidationErrors>
-                        <Border BorderBrush="{TemplateBinding BorderBrush}"
-                                Background="{TemplateBinding Background}"
-                                CornerRadius="{TemplateBinding CornerRadius}" >
-                            <Grid x:Name="SliderContainer">
+                            <Grid x:Name="SliderContainer" Margin="-7, 0, -7, 0">
                                 <Track Name="PART_Track"
                                        Minimum="{TemplateBinding Minimum}"
                                        Maximum="{TemplateBinding Maximum}"
@@ -45,12 +44,12 @@
                                        Orientation="Horizontal">
                                     <Track.DecreaseButton>
                                             <RepeatButton Name="PART_DecreaseButton" Background="Transparent" Theme="{StaticResource HorizontalDecreaseRepeatButton}">
-                                                <Border Background="{DynamicResource Primary}" CornerRadius="12, 4, 4, 12" Height="12"></Border>
+                                                <Border Background="{TemplateBinding Background}" CornerRadius="12, 4, 4, 12" Height="12"></Border>
                                             </RepeatButton>
                                     </Track.DecreaseButton>
                                         <Track.IncreaseButton>
                                             <RepeatButton Name="PART_IncreaseButton" Theme="{StaticResource HorizontalIncreaseRepeatButton}">
-                                                <Border Background="{DynamicResource SecondaryContainer}" 
+                                                <Border Background="{TemplateBinding Foreground}" 
                                                         CornerRadius="4, 12, 12, 4" 
                                                         Height="12">
                                                     <Ellipse Height="4" Width="4"
@@ -64,7 +63,6 @@
                                                DataContext="{TemplateBinding Value}" Name="SliderThumb"></Thumb>
                                     </Track>
                             </Grid>
-                        </Border>
                     </DataValidationErrors>
                 </ControlTemplate>
             </Setter>
