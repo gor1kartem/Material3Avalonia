@@ -41,6 +41,7 @@
         </Style>
         <Style Selector="^:pressed">
             <Setter Property="CornerRadius" Value="8"></Setter>
+            <Setter Property="RenderTransform" Value="scale(0.97)"/>
         </Style>
     </ControlTheme>
     
