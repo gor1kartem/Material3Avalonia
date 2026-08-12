@@ -18,6 +18,9 @@
                 <CornerRadiusTransition Property="CornerRadius" Easing="{StaticResource StandardFastSpacialEasing}" Duration="0:0:0.350"></CornerRadiusTransition>
                 <BrushTransition Duration="0.150" Property="Background"></BrushTransition>
                 <BrushTransition Duration="0.150" Property="Foreground"></BrushTransition>
+                <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.150"
+                                               Easing="CubicEaseOut">
+                </TransformOperationsTransition>
             </Transitions>
         </Setter>
         <Setter Property="Template">
