@@ -14,16 +14,18 @@
                 <MergeResourceInclude Source="Controls/RadioButton.axaml"></MergeResourceInclude>
                 <MergeResourceInclude Source="Controls/ToggleButton.axaml"></MergeResourceInclude>
                 <MergeResourceInclude Source="Controls/ListBox.axaml"></MergeResourceInclude>
+                <MergeResourceInclude Source="Controls/RepeatButton.axaml"></MergeResourceInclude>
+                <MergeResourceInclude Source="Controls/ButtonSpinner.axaml"></MergeResourceInclude>
                 <MergeResourceInclude Source="Controls/ContentPage.axaml"></MergeResourceInclude>
+                <MergeResourceInclude Source="Controls/Window.axaml"></MergeResourceInclude>
+                <MergeResourceInclude Source="Controls/NavigationPage.axaml"></MergeResourceInclude>
                 <MergeResourceInclude Source="Controls/TabItem.axaml"></MergeResourceInclude>
                 <MergeResourceInclude Source="Controls/ProgressBar.axaml"></MergeResourceInclude>
-                <!-- <MergeResourceInclude Source="Controls/ContentPage.axaml"></MergeResourceInclude> -->
                 <MergeResourceInclude Source="CustomControls/Settings/SettingsItem.axaml"></MergeResourceInclude>
                 <MergeResourceInclude Source="CustomControls/CircularProgress.axaml"></MergeResourceInclude>
                 <MergeResourceInclude Source="CustomControls/ButtonGroup.axaml"></MergeResourceInclude>
                 <MergeResourceInclude Source="CustomControls/MaterialExpander.axaml"></MergeResourceInclude>
                 <MergeResourceInclude Source="CustomControls/AppBar.axaml"></MergeResourceInclude>
-                <MergeResourceInclude Source="CornerRadius.axaml"></MergeResourceInclude>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Styles.Resources>
