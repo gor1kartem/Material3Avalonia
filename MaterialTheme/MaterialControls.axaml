@@ -23,7 +23,6 @@
                 <MergeResourceInclude Source="Controls/ProgressBar.axaml"></MergeResourceInclude>
                 <MergeResourceInclude Source="CustomControls/Settings/SettingsItem.axaml"></MergeResourceInclude>
                 <MergeResourceInclude Source="CustomControls/CircularProgress.axaml"></MergeResourceInclude>
-                <MergeResourceInclude Source="CustomControls/ButtonGroup.axaml"></MergeResourceInclude>
                 <MergeResourceInclude Source="CustomControls/MaterialExpander.axaml"></MergeResourceInclude>
                 <MergeResourceInclude Source="CustomControls/AppBar.axaml"></MergeResourceInclude>
             </ResourceDictionary.MergedDictionaries>
