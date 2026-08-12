@@ -6,42 +6,46 @@
         <Setter Property="Foreground" Value="{DynamicResource OnSurface}" />
         <Setter Property="TopCommandBar">
             <Template>
-                <material:AppBar Title="{Binding $parent[ContentPage].Header}">
-                    <material:AppBar.IsVisible>
-                        <MultiBinding Converter="{x:Static BoolConverters.And}">
-                            <Binding RelativeSource="{RelativeSource AncestorType=NavigationPage}" Path="CanGoBack"/>
-                            <Binding RelativeSource="{RelativeSource AncestorType=ContentPage}" Path="Header" Converter="{x:Static StringConverters.IsNotNullOrEmpty}"/>
-                        </MultiBinding>
-                    </material:AppBar.IsVisible>
-                </material:AppBar>
             </Template>
         </Setter>
         <Setter Property="Template">
             <ControlTemplate>
-                <DockPanel>
-                    <!-- Visibility managed in code-behind -->
-                    <ContentPresenter Name="PART_TopCommandBar"
-                                      DockPanel.Dock="Top"
-                                      HorizontalContentAlignment="Stretch"
-                                      IsVisible="False" />
+                <Grid RowDefinitions="Auto, Auto, *, Auto">
+                    <material:AppBar Header="{Binding $parent[ContentPage].Header}">
+                        <material:AppBar.IsVisible>
+                            <MultiBinding Converter="{x:Static BoolConverters.And}">
+                                <Binding RelativeSource="{RelativeSource AncestorType=NavigationPage}" Path="CanGoBack"/>
+                                <Binding RelativeSource="{RelativeSource AncestorType=ContentPage}" Path="Header" Converter="{x:Static StringConverters.IsNotNullOrEmpty}"/>
+                            </MultiBinding>
+                        </material:AppBar.IsVisible>
+                        <ContentPresenter Name="PART_TopCommandBar"
+                                          HorizontalContentAlignment="Stretch"
+                                          IsVisible="False"/>
+                    </material:AppBar>
+                    
 
+
+
+                        <ContentPresenter Name="PART_ContentPresenter"
+                                          HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          Background="{TemplateBinding Background}"
+                                          BorderBrush="{TemplateBinding BorderBrush}"
+                                          BorderThickness="{TemplateBinding BorderThickness}"
+                                          Content="{TemplateBinding Content}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          CornerRadius="{TemplateBinding CornerRadius}" Grid.Row="2" />
+                    
                     <!-- Visibility managed in code-behind -->
                     <ContentPresenter Name="PART_BottomCommandBar"
                                       DockPanel.Dock="Bottom"
                                       HorizontalContentAlignment="Stretch"
-                                      IsVisible="False" />
-
-                    <ContentPresenter Name="PART_ContentPresenter"
-                                      HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                      VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                                      Background="{TemplateBinding Background}"
-                                      BorderBrush="{TemplateBinding BorderBrush}"
-                                      BorderThickness="{TemplateBinding BorderThickness}"
-                                      Content="{TemplateBinding Content}"
-                                      ContentTemplate="{TemplateBinding ContentTemplate}"
-                                      CornerRadius="{TemplateBinding CornerRadius}" />
-                </DockPanel>
+                                      IsVisible="False" Grid.Row="3" />
+                </Grid>
             </ControlTemplate>
         </Setter>
+        <Style Selector="^.HiddenAppBar /template/ material|AppBar">
+            <Setter Property="IsVisible" Value="False"></Setter>
+        </Style>
     </ControlTheme>
 </ResourceDictionary>
