@@ -4,19 +4,24 @@
         <TargetFramework>net10.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <PackageId>MaterialThemeAvalonia</PackageId>
+        <PackageId>Material3Avalonia</PackageId>
         <Version>0.1</Version>
         <Title>Material 3 theme for Avalonia</Title>
         <Authors>gor1kartem</Authors>
         <Description>Material 3 theme for Avalonia</Description>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <RepositoryUrl>https://github.com/gor1kartem/Material3Avalonia</RepositoryUrl>
+        <PackageTags>Theme, Avalonia, Material</PackageTags>
+        <RepositoryType>git</RepositoryType>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
-
     <ItemGroup>
       <PackageReference Include="Avalonia" Version="12.0.4" />
       <PackageReference Include="Avalonia.Desktop" Version="12.0.4" />
       <PackageReference Include="Avalonia.Markup.Xaml.Loader" Version="12.0.4" />
       <PackageReference Include="Avalonia.Skia" Version="12.0.4" />
-      <PackageReference Include="Avalonia.Themes.Simple" Version="12.0.4" />
+      <PackageReference Include="Avalonia.Themes.Simple" Version="12.0.4" /><None Include="../README.md" Pack="true" PackagePath="README.md" />
     </ItemGroup>
 
     <ItemGroup>
