@@ -13,10 +13,13 @@
                 <ResourceInclude Source="Accents/ColorPalette.axaml"></ResourceInclude>
                 <ResourceInclude Source="Resources/StateLayer.axaml"></ResourceInclude>
                 <ResourceInclude Source="Animations/Easings.axaml"></ResourceInclude>
+                <ResourceInclude Source="Typography/FontSize.axaml"></ResourceInclude>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
         <FontFamily x:Key="MaterialSymbols" >avares://MaterialTheme/Resources#Material Symbols Rounded</FontFamily>
+        <FontFamily x:Key="GoogleSansFlex" >avares://MaterialTheme/Resources#Google Sans Flex</FontFamily>
     </Styles.Resources>
     
     <StyleInclude Source="MaterialControls.axaml"></StyleInclude>
+    <StyleInclude Source="Styles/NavigationPage.axaml"></StyleInclude>
 </Styles>
