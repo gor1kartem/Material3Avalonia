@@ -1,0 +1,73 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:customControls="clr-namespace:MaterialTheme.CustomControls">
+    <Design.PreviewWith>
+        <customControls:ButtonGroup />
+    </Design.PreviewWith>
+
+    <ControlTheme x:Key="ButtonGroupToggleButtonStyle" TargetType="ToggleButton">
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+        <Setter Property="Foreground" Value="{DynamicResource OnSecondaryContainer}"></Setter>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="Padding" Value="24,0,24,0"></Setter>
+        <Setter Property="CornerRadius" Value="8"></Setter>
+        <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+        <Setter Property="MinHeight" Value="40"></Setter>
+        <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+        <Setter Property="Background" Value="{DynamicResource SecondaryContainer}"></Setter>
+        <Setter Property="Transitions">
+            <Transitions>
+                <CornerRadiusTransition Property="CornerRadius" Duration="0:0:0.150" Easing="{DynamicResource ExpressiveFastSpacial}" Delay="0:0:0.050"></CornerRadiusTransition>
+            </Transitions>
+        </Setter>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <ContentPresenter x:Name="PART_ContentPresenter"
+                                  Content="{TemplateBinding Content}"
+                                  Padding="{TemplateBinding Padding}"
+                                  ContentTemplate="{TemplateBinding ContentTemplate}"
+                                  RecognizesAccessKey="True"
+                                  HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" 
+                                  Background="{TemplateBinding Background}" 
+                                  CornerRadius="{TemplateBinding CornerRadius}"
+                                  BorderBrush="{TemplateBinding BorderBrush}"
+                                  BorderThickness="{TemplateBinding BorderThickness}"/>
+
+            </ControlTemplate>
+        </Setter>
+        
+        <Style Selector="^:checked">
+            <Setter Property="CornerRadius" Value="25"></Setter>
+            <Setter Property="Background" Value="{DynamicResource Secondary}"></Setter>
+            <Setter Property="Foreground" Value="{DynamicResource OnSecondary}"></Setter>
+        </Style>
+    </ControlTheme>
+    
+    <ControlTheme x:Key="FirstButtonGroupToggleButtonStyle" BasedOn="{StaticResource ButtonGroupToggleButtonStyle}" TargetType="ToggleButton">
+        <Setter Property="CornerRadius" Value="25, 12, 12, 25"></Setter>
+        <Style Selector="^:checked">
+            <Setter Property="CornerRadius" Value="25"></Setter>
+            <Setter Property="Background" Value="{DynamicResource Secondary}"></Setter>
+            <Setter Property="Foreground" Value="{DynamicResource OnSecondary}"></Setter>
+        </Style>
+    </ControlTheme>
+    <ControlTheme x:Key="LastButtonGroupToggleButtonStyle" BasedOn="{StaticResource ButtonGroupToggleButtonStyle}" TargetType="ToggleButton">
+        <Setter Property="CornerRadius" Value="12, 25, 25, 12"></Setter>
+        <Style Selector="^:checked">
+            <Setter Property="CornerRadius" Value="25"></Setter>
+            <Setter Property="Background" Value="{DynamicResource Secondary}"></Setter>
+            <Setter Property="Foreground" Value="{DynamicResource OnSecondary}"></Setter>
+        </Style>
+    </ControlTheme>
+    <ControlTheme x:Key="Base" TargetType="customControls:ButtonGroup"></ControlTheme>
+    <ControlTheme x:Key="Standard" TargetType="{x:Type customControls:ButtonGroup}"></ControlTheme>
+    <ControlTheme x:Key="{x:Type customControls:ButtonGroup}" TargetType="customControls:ButtonGroup">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <UniformGrid x:Name="PART_UniformGrid" HorizontalAlignment="{TemplateBinding HorizontalAlignment}"></UniformGrid>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+</ResourceDictionary>

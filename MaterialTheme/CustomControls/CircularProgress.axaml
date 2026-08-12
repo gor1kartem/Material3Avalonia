@@ -1,0 +1,38 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:customControls="clr-namespace:MaterialTheme.CustomControls">
+    <Design.PreviewWith>
+        <customControls:CircularProgress></customControls:CircularProgress>
+    </Design.PreviewWith>
+    <ControlTheme x:Key="ProgressRing" TargetType="Arc">
+            <ControlTheme.Animations>
+                <Animation Duration="0:0:5.63" IterationCount="INFINITE" Easing="{DynamicResource IndeterminateEasing}"  PlaybackDirection="AlternateReverse">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="SweepAngle" Value="-230"></Setter>
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="SweepAngle" Value="230"></Setter>
+                    </KeyFrame>
+                </Animation>
+                <Animation Duration="0:0:5.332" IterationCount="INFINITE" Easing="LinearEasing">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="RotateTransform.Angle" Value="0" />
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RotateTransform.Angle" Value="2160" />
+                    </KeyFrame>
+                </Animation>
+            </ControlTheme.Animations>
+    </ControlTheme>
+    <ControlTheme x:Key="{x:Type customControls:CircularProgress}" TargetType="customControls:CircularProgress">
+        <Setter Property="Background" Value="{DynamicResource OnPrimary}"></Setter>
+        <Setter Property="Width" Value="40"></Setter>
+        <Setter Property="Height" Value="40"></Setter>
+        <Setter Property="StrokeThickness" Value="4"></Setter>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Arc StrokeLineCap="Round" StartAngle="0" Fill="{TemplateBinding Background}" StrokeThickness="{TemplateBinding StrokeThickness}" SweepAngle="265" Stroke="{TemplateBinding Foreground}" Width="{TemplateBinding Width}" Height="{TemplateBinding Width}" Theme="{StaticResource ProgressRing}"></Arc>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+</ResourceDictionary>

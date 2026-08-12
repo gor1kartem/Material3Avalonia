@@ -1,0 +1,18 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:bars="clr-namespace:MaterialTheme.CustomControls">
+    <ControlTheme x:Key="{x:Type bars:AppBar}" TargetType="bars:AppBar">
+        <Setter Property="Title" Value="{Binding $parent[ContentPage].Header}"></Setter>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Padding="4, 0,4,0" Height="64">
+                    <Grid ColumnDefinitions="48, *, Auto" ColumnSpacing="4">
+                        <Button FontFamily="{StaticResource MaterialSymbols}" IsVisible="{Binding $parent[NavigationPage].CanGoBack}" Height="48" Width="48" Content="&#xE5C4;" Command="{Binding $parent[NavigationPage].PopAsync}" VerticalAlignment="Center" Theme="{StaticResource TextButton}" Padding="0" FontSize="24" ></Button>
+                        <TextBlock Text="{TemplateBinding Title}" Grid.Column="1" FontSize="22" LineHeight="28" FontWeight="400" VerticalAlignment="Center"></TextBlock>
+                        <ContentPresenter Content="{TemplateBinding Content}" Grid.Column="2" VerticalAlignment="Center"></ContentPresenter>
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+</ResourceDictionary>

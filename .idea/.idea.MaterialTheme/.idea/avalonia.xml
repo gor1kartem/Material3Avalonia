@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="Accents/ColorPalette.axaml" value="SampleApp/SampleApp.csproj" />
+        <entry key="Controls/Button.axaml" value="SampleApp/SampleApp.csproj" />
+        <entry key="Controls/ContentPage.axaml" value="SampleApp/SampleApp.csproj" />
+        <entry key="Controls/ListBox.axaml" value="SampleApp/SampleApp.csproj" />
+        <entry key="Controls/NavigationPage.axaml" value="SampleApp/SampleApp.csproj" />
+        <entry key="Controls/Slider.axaml" value="SampleApp/SampleApp.csproj" />
+        <entry key="Controls/ToggleButton.axaml" value="SampleApp/SampleApp.csproj" />
+        <entry key="Controls/ToggleSwitch.axaml" value="SampleApp/SampleApp.csproj" />
+        <entry key="CustomControls/CircularProgress.axaml" value="SampleApp/SampleApp.csproj" />
+        <entry key="MaterialTheme/CustomControls/CircularProgress.axaml" value="SampleApp/SampleApp.csproj" />
+        <entry key="SampleApp/App.axaml" value="SampleApp/SampleApp.csproj" />
+        <entry key="SampleApp/MainWindow.axaml" value="SampleApp/SampleApp.csproj" />
+      </map>
+    </option>
+  </component>
+</project>
