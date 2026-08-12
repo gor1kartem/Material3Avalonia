@@ -1,0 +1,59 @@
+﻿<ContentPage xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="SampleApp.Views.MainPage"
+             xmlns:material="clr-namespace:MaterialTheme.CustomControls;assembly=MaterialTheme">
+    <ContentPage.Styles>
+        <Style Selector="material|Curve">
+            <Style.Animations>
+                <Animation Duration="0:0:0.3" IterationCount="INFINITE">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="Offset" Value="-40"></Setter>
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+    </ContentPage.Styles>
+    <StackPanel>
+        <Label Content="sfddfs"></Label>
+        <Border Padding="20" HorizontalAlignment="Stretch">
+            <StackPanel Orientation="Vertical" Spacing="10">
+                <ButtonSpinner>fadsdsfasdf</ButtonSpinner>
+                <StackPanel Spacing="2" Orientation="Horizontal">
+                    <Button Content="Button"></Button>
+                    <Button Content="Button" Theme="{StaticResource ElevatedButton}"></Button>
+                    <Button Content="Button" Theme="{StaticResource FilledTonalButton}"></Button>
+                    <Button Content="Button" Theme="{StaticResource OutlinedButton}"></Button>
+                    <Button Content="Text Button" Theme="{StaticResource TextButton}"></Button>
+                </StackPanel>
+                <Slider></Slider>
+                <ProgressBar Minimum="0" Maximum="10" Value="3"></ProgressBar>
+                <StackPanel Orientation="Horizontal" Spacing="30">
+                    <ToggleSwitch></ToggleSwitch>
+                    <ToggleSwitch IsChecked="True"></ToggleSwitch>
+                    <material:CircularProgress HorizontalAlignment="Left"></material:CircularProgress>
+                    <ListBox Theme="{StaticResource ConnectedButtonGroupTonal}" HorizontalAlignment="Stretch">
+                        <ListBox.Items>
+                            <x:String>Option 1</x:String>
+                            <x:String>Option 2</x:String>
+                            <x:String>Another option</x:String>
+                        </ListBox.Items>
+                    </ListBox>
+                </StackPanel>
+                <RadioButton>Radio button</RadioButton>
+                <RadioButton>Radio button</RadioButton>
+                <RadioButton>Radio button</RadioButton>
+                <StackPanel Orientation="Horizontal">
+                    <ToggleButton>Toggle button</ToggleButton>
+                    <ToggleButton>Toggle button</ToggleButton>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+        <Button HorizontalAlignment="Stretch" Content="Navigate to empty page" Click="Button_NavigateToEmptyPage">
+        </Button>
+    </StackPanel>
+
+
+</ContentPage>
