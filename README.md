@@ -1,5 +1,5 @@
 # Material 3 theme for Avalonia
-![Placeholder](screenshot.png)
+![Placeholder](https://raw.githubusercontent.com/gor1kartem/Material3Avalonia/refs/heads/main/screenshot.png)
 
 Setup
 ---
