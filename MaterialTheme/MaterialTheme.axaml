@@ -18,6 +18,7 @@
         </ResourceDictionary>
         <FontFamily x:Key="MaterialSymbols" >avares://MaterialTheme/Resources#Material Symbols Rounded</FontFamily>
         <FontFamily x:Key="GoogleSansFlex" >avares://MaterialTheme/Resources#Google Sans Flex</FontFamily>
+        <FontFamily x:Key="Roboto" >avares://MaterialTheme/Resources#Roboto</FontFamily>
     </Styles.Resources>
     
     <StyleInclude Source="MaterialControls.axaml"></StyleInclude>
