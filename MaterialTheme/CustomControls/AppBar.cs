@@ -5,12 +5,12 @@ namespace MaterialTheme.CustomControls;
 
 public class AppBar : ContentControl
 {
-    public static readonly StyledProperty<string?> TitleProperty = AvaloniaProperty.Register<AppBar, string?>(
-        nameof(Title));
+    public static readonly StyledProperty<object?> HeaderProperty = AvaloniaProperty.Register<AppBar, object?>(
+        nameof(Header));
 
-    public string? Title
+    public object? Header
     {
-        get => GetValue(TitleProperty);
-        set => SetValue(TitleProperty, value);
+        get => GetValue(HeaderProperty);
+        set => SetValue(HeaderProperty, value);
     }
 }
