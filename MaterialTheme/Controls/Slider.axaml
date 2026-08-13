@@ -44,12 +44,12 @@
                                        Orientation="Horizontal">
                                     <Track.DecreaseButton>
                                             <RepeatButton Name="PART_DecreaseButton" Background="Transparent" Theme="{StaticResource HorizontalDecreaseRepeatButton}">
-                                                <Border Background="{TemplateBinding Background}" CornerRadius="12, 4, 4, 12" Height="12"></Border>
+                                                <Border Background="{TemplateBinding Foreground}" CornerRadius="12, 4, 4, 12" Height="12"></Border>
                                             </RepeatButton>
                                     </Track.DecreaseButton>
                                         <Track.IncreaseButton>
                                             <RepeatButton Name="PART_IncreaseButton" Theme="{StaticResource HorizontalIncreaseRepeatButton}">
-                                                <Border Background="{TemplateBinding Foreground}" 
+                                                <Border Background="{TemplateBinding Background}" 
                                                         CornerRadius="4, 12, 12, 4" 
                                                         Height="12">
                                                     <Ellipse Height="4" Width="4"
@@ -58,7 +58,7 @@
                                                 </Border>
                                             </RepeatButton>
                                         </Track.IncreaseButton>
-                                        <Thumb Background="{DynamicResource Primary}"
+                                        <Thumb Background="{TemplateBinding Foreground}"
                                                Focusable="False" 
                                                DataContext="{TemplateBinding Value}" Name="SliderThumb"></Thumb>
                                     </Track>
