@@ -58,23 +58,24 @@
 
     <ControlTheme x:Key="{x:Type ListBoxItem}" TargetType="ListBoxItem">
         <Setter Property="Margin" Value="0, 0, 0, 2"></Setter>
+        <Setter Property="Padding" Value="16, 10, 16, 10"></Setter>
         <Setter Property="Template">
             <ControlTemplate>
-                <Border Background="{TemplateBinding Background}" 
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="{TemplateBinding CornerRadius}"
-                        ClipToBounds="True"
-                        Padding="{TemplateBinding Padding}">
-                    <Panel>
-                        <Border x:Name="PART_StateLayer" Opacity="0.08"></Border>
-                        <ContentPresenter Name="PART_ContentPresenter"
-                                          ContentTemplate="{TemplateBinding ContentTemplate}"
-                                          Content="{TemplateBinding Content}"
-                                          VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                                          HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" />
-                    </Panel>
-                </Border>
+                <Panel>
+                    <Border Background="{TemplateBinding Background}" 
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            ClipToBounds="True"
+                            Padding="{TemplateBinding Padding}">
+                            <ContentPresenter Name="PART_ContentPresenter"
+                                              ContentTemplate="{TemplateBinding ContentTemplate}"
+                                              Content="{TemplateBinding Content}"
+                                              VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" />
+                    </Border>
+                    <Border x:Name="PART_StateLayer" Opacity="0.08"></Border>
+                </Panel>
             </ControlTemplate>
         </Setter>
         <Setter Property="Background" Value="{DynamicResource Surface}"></Setter>
