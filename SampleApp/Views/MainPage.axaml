@@ -4,7 +4,23 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="SampleApp.Views.MainPage"
-             xmlns:material="clr-namespace:MaterialTheme.CustomControls;assembly=MaterialTheme">
+             xmlns:material="clr-namespace:MaterialTheme.CustomControls;assembly=MaterialTheme"
+             Header="Main Page"
+             Classes="HideAppBar">
+    <NavigationPage.TopCommandBar>
+        <StackPanel>
+            <Button Content="Download"></Button>
+            <Button Content="Download"></Button>
+            <Button Content="Download"></Button>
+        </StackPanel>
+    </NavigationPage.TopCommandBar>
+    <ContentPage.TopCommandBar>
+        <StackPanel>
+        <Button Content="Download"></Button>
+        <Button Content="Download"></Button>
+        <Button Content="Download"></Button>
+        </StackPanel>
+    </ContentPage.TopCommandBar>
     <ContentPage.Styles>
         <Style Selector="material|Curve">
             <Style.Animations>
@@ -53,6 +69,13 @@
         </Border>
         <Button HorizontalAlignment="Stretch" Content="Navigate to empty page" Click="Button_NavigateToEmptyPage">
         </Button>
+        <ListBox>
+            <ListBox.Items>
+                <x:String>item</x:String>
+                <x:String>item</x:String>
+                <x:String>item</x:String>
+            </ListBox.Items>
+        </ListBox>
     </StackPanel>
 
 
