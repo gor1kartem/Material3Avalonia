@@ -5,7 +5,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <PackageId>Material3Avalonia</PackageId>
-        <Version>0.1</Version>
+        <Version>0.1.1</Version>
         <Title>Material 3 theme for Avalonia</Title>
         <Authors>gor1kartem</Authors>
         <Description>Material 3 theme for Avalonia</Description>
@@ -64,11 +64,12 @@
 
     <ItemGroup>
       <Folder Include="Assets\" />
-      <Folder Include="Converters\" />
     </ItemGroup>
 
     <ItemGroup>
       <AvaloniaResource Include="Resources\MaterialSymbolsRounded[FILL,GRAD,opsz,wght].ttf" />
+      <None Remove="Resources\Roboto-VariableFont_wdth,wght.ttf" />
+      <AvaloniaResource Include="Resources\Roboto-VariableFont_wdth,wght.ttf" />
     </ItemGroup>
 
 </Project>
