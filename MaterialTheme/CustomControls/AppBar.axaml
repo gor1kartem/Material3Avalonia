@@ -3,11 +3,12 @@
                     xmlns:bars="clr-namespace:MaterialTheme.CustomControls">
     <ControlTheme x:Key="{x:Type bars:AppBar}" TargetType="bars:AppBar">
         <Setter Property="Header" Value="{Binding $parent[ContentPage].Header}"></Setter>
+        <Setter Property="Height" Value="64"></Setter>
         <Setter Property="Template">
             <ControlTemplate>
-                    <Grid ColumnDefinitions="48, *, Auto" ColumnSpacing="4" Height="64" Margin="4, 0,4,0">
-                        <Button FontFamily="{StaticResource MaterialSymbols}" IsVisible="{Binding $parent[NavigationPage].CanGoBack}" Height="48" Width="48" Content="&#xE5C4;" Command="{Binding $parent[NavigationPage].PopAsync}" VerticalAlignment="Center" Theme="{StaticResource TextButton}" Padding="0" FontSize="24" ></Button>
-                        <ContentPresenter Content="{TemplateBinding Header}" Grid.Column="1" FontSize="22" LineHeight="28" FontWeight="400" VerticalAlignment="Center"></ContentPresenter>
+                    <Grid ColumnDefinitions="48, *, Auto" ColumnSpacing="4" Margin="4, 0,4,0" Height="{TemplateBinding Height}">
+                        <Button IsVisible="{TemplateBinding IsBackButtonVisible}" x:Name="BackButton" FontFamily="{StaticResource MaterialSymbols}" Height="48" Width="48" Content="&#xE5C4;" Command="{Binding $parent[NavigationPage].PopAsync}" VerticalAlignment="Center" Theme="{StaticResource TextButton}" Padding="0" FontSize="24" ></Button>
+                        <ContentPresenter IsVisible="{TemplateBinding IsHeaderVisible}" Content="{TemplateBinding Header}" Grid.Column="1" FontSize="22" LineHeight="28" FontWeight="400" VerticalAlignment="Center"></ContentPresenter>
                         <ContentPresenter Content="{TemplateBinding Content}" Grid.Column="2" VerticalAlignment="Center"></ContentPresenter>
                     </Grid>
             </ControlTemplate>

@@ -1,0 +1,21 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:material="clr-namespace:MaterialTheme.CustomControls">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <!-- Add Controls for Previewer Here -->
+        </Border>
+    </Design.PreviewWith>
+
+    <Style Selector="ContentPage.HideAppBar">
+        <Style Selector="^ /template/ material|AppBar">
+            <Setter Property="IsBackButtonVisible" Value="False"></Setter>
+            <Setter Property="IsHeaderVisible" Value="False"></Setter>
+            <Setter Property="Height">
+                <Setter.Value>
+                    <x:Double>NaN</x:Double>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Style>
+</Styles>

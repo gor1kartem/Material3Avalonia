@@ -1,7 +1,25 @@
 ﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:material="clr-namespace:MaterialTheme.CustomControls">
+                    xmlns:material="clr-namespace:MaterialTheme.CustomControls"
+                    xmlns:converters="clr-namespace:MaterialTheme.Converters">
     <ControlTheme x:Key="{x:Type ContentPage}" TargetType="ContentPage">
+        <ControlTheme.Resources>
+            <converters:MultiNotEqualConverter x:Key="MultiNotEqualConverter"></converters:MultiNotEqualConverter>
+        </ControlTheme.Resources>
+
+        <Style Selector="^ /template/ material|AppBar">
+            <Setter Property="IsVisible">
+                <Setter.Value>
+                    <MultiBinding Converter="{x:Static BoolConverters.Or}">
+                        <MultiBinding Converter="{StaticResource MultiNotEqualConverter}">
+                            <Binding Path="$parent[NavigationPage].NavigationStack[0]"></Binding>
+                            <Binding Path="$parent[ContentPage]"></Binding>
+                        </MultiBinding>
+                        <Binding  Path="$parent[ContentPage].Header" Converter="{x:Static StringConverters.IsNotNullOrEmpty}"/>
+                    </MultiBinding>
+                </Setter.Value>
+            </Setter>
+        </Style>
         <Setter Property="Background" Value="{DynamicResource Surface}" />
         <Setter Property="Foreground" Value="{DynamicResource OnSurface}" />
         <Setter Property="TopCommandBar">
@@ -11,21 +29,17 @@
         <Setter Property="Template">
             <ControlTemplate>
                 <Grid RowDefinitions="Auto, Auto, *, Auto">
-                    <material:AppBar Header="{Binding $parent[ContentPage].Header}">
-                        <material:AppBar.IsVisible>
-                            <MultiBinding Converter="{x:Static BoolConverters.And}">
-                                <Binding RelativeSource="{RelativeSource AncestorType=NavigationPage}" Path="CanGoBack"/>
-                                <Binding RelativeSource="{RelativeSource AncestorType=ContentPage}" Path="Header" Converter="{x:Static StringConverters.IsNotNullOrEmpty}"/>
+                    <material:AppBar Header="{TemplateBinding Header}">
+                        <material:AppBar.IsBackButtonVisible>
+                            <MultiBinding Converter="{StaticResource MultiNotEqualConverter}">
+                                <Binding Path="$parent[NavigationPage].NavigationStack[0]"></Binding>
+                                <Binding Path="$parent[ContentPage]"></Binding>
                             </MultiBinding>
-                        </material:AppBar.IsVisible>
+                        </material:AppBar.IsBackButtonVisible>
                         <ContentPresenter Name="PART_TopCommandBar"
                                           HorizontalContentAlignment="Stretch"
                                           IsVisible="False"/>
                     </material:AppBar>
-                    
-
-
-
                         <ContentPresenter Name="PART_ContentPresenter"
                                           HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                                           VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
@@ -44,8 +58,5 @@
                 </Grid>
             </ControlTemplate>
         </Setter>
-        <Style Selector="^.HiddenAppBar /template/ material|AppBar">
-            <Setter Property="IsVisible" Value="False"></Setter>
-        </Style>
     </ControlTheme>
 </ResourceDictionary>
