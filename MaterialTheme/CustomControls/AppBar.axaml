@@ -1,16 +1,95 @@
 ﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:bars="clr-namespace:MaterialTheme.CustomControls">
-    <ControlTheme x:Key="{x:Type bars:AppBar}" TargetType="bars:AppBar">
+                    xmlns:material="clr-namespace:MaterialTheme.CustomControls">
+    <Design.PreviewWith>
+        <Border Width="500" Height="500">
+            <StackPanel Spacing="20">
+                <material:AppBar Theme="{StaticResource MediumAppBar}" Background="Red" Header="Main Page" VerticalAlignment="Top">
+                    <Button Content="Download"></Button>
+                </material:AppBar>
+                <material:AppBar Background="Red" Header="Main Page" VerticalAlignment="Top">
+                    <Button Content="Download"></Button>
+                </material:AppBar>
+            </StackPanel>
+
+        </Border>
+    </Design.PreviewWith>
+    <ControlTheme x:Key="{x:Type material:AppBar}" TargetType="material:AppBar">
         <Setter Property="Header" Value="{Binding $parent[ContentPage].Header}"></Setter>
         <Setter Property="Height" Value="64"></Setter>
+        <Setter Property="Padding" Value="4,0,4,0"></Setter>
         <Setter Property="Template">
             <ControlTemplate>
-                    <Grid ColumnDefinitions="48, *, Auto" ColumnSpacing="4" Margin="4, 0,4,0" Height="{TemplateBinding Height}">
-                        <Button IsVisible="{TemplateBinding IsBackButtonVisible}" x:Name="BackButton" FontFamily="{StaticResource MaterialSymbols}" Height="48" Width="48" Content="&#xE5C4;" Command="{Binding $parent[NavigationPage].PopAsync}" VerticalAlignment="Center" Theme="{StaticResource TextButton}" Padding="0" FontSize="24" ></Button>
-                        <ContentPresenter IsVisible="{TemplateBinding IsHeaderVisible}" Content="{TemplateBinding Header}" Grid.Column="1" FontSize="22" LineHeight="28" FontWeight="400" VerticalAlignment="Center"></ContentPresenter>
-                        <ContentPresenter Content="{TemplateBinding Content}" Grid.Column="2" VerticalAlignment="Center"></ContentPresenter>
+                <Border Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}"
+                        Height="{TemplateBinding Height}">
+                    <Grid ColumnDefinitions="48, *, Auto" ColumnSpacing="4">
+                        <Button IsVisible="{TemplateBinding IsBackButtonVisible}" x:Name="BackButton"
+                                FontFamily="{StaticResource MaterialSymbols}" Content="&#xE5C4;"
+                                Command="{Binding $parent[NavigationPage].PopAsync}" VerticalAlignment="Center"
+                                Theme="{StaticResource IconButton}" Padding="0">
+                        </Button>
+                        <ContentPresenter IsVisible="{TemplateBinding IsHeaderVisible}"
+                                          Content="{TemplateBinding Header}"
+                                          Grid.Column="1" FontSize="22" LineHeight="28" FontWeight="400"
+                                          VerticalAlignment="Center">
+                        </ContentPresenter>
+                        <ContentPresenter Content="{TemplateBinding Content}" Grid.Column="2"
+                                          VerticalAlignment="Center" FontSize="{TemplateBinding FontSize}">
+                        </ContentPresenter>
                     </Grid>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+    </ControlTheme>
+    <ControlTheme x:Key="MediumAppBar" TargetType="material:AppBar">
+        <Setter Property="Header"
+                Value="{Binding $parent[ContentPage].Header}" />
+        <Setter Property="MinHeight" Value="112" />
+        <Setter Property="Padding" Value="4,4, 4, 12" />
+        <Setter Property="FontSize" Value="28"></Setter>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border Background="{TemplateBinding Background}"
+                        Padding="{TemplateBinding Padding}"
+                        MinHeight="{TemplateBinding MinHeight}">
+                    <Grid
+                        RowDefinitions="48,Auto"
+                        ColumnDefinitions="48,*,Auto"
+                        ColumnSpacing="4" ClipToBounds="False">
+                        <!-- Back button -->
+                        <Button x:Name="BackButton"
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                IsVisible="{TemplateBinding IsBackButtonVisible}"
+                                FontFamily="{StaticResource MaterialSymbols}"
+                                Content="&#xE5C4;"
+                                Command="{Binding $parent[NavigationPage].PopAsync}"
+                                VerticalAlignment="Center"
+                                Theme="{StaticResource IconButton}"
+                                Padding="0"
+                                FontSize="{TemplateBinding FontSize}" />
+
+                        <!-- Header -->
+                        <ContentPresenter Grid.Row="1"
+                                          Grid.Column="0"
+                                          Grid.ColumnSpan="2"
+                                          IsVisible="{TemplateBinding IsHeaderVisible}"
+                                          Content="{TemplateBinding Header}"
+                                          FontSize="{TemplateBinding FontSize}"
+                                          FontWeight="400"
+                                          VerticalAlignment="Bottom"
+                                          Margin="16,0,0,0"
+                                          ClipToBounds="False" />
+
+                        <!-- Action content -->
+                        <ContentPresenter Grid.Row="0"
+                                          Grid.Column="2"
+                                          Content="{TemplateBinding Content}"
+                                          VerticalAlignment="Center"
+                                          FontSize="14"/>
+
+                    </Grid>
+                </Border>
             </ControlTemplate>
         </Setter>
     </ControlTheme>
