@@ -8,6 +8,14 @@
         </ControlTheme.Resources>
 
         <Style Selector="^ /template/ material|AppBar">
+            <Setter Property="IsBackButtonVisible">
+                <Setter.Value>
+                    <MultiBinding Converter="{StaticResource MultiNotEqualConverter}">
+                        <Binding Path="$parent[NavigationPage].NavigationStack[0]"></Binding>
+                        <Binding Path="$parent[ContentPage]"></Binding>
+                    </MultiBinding>
+                </Setter.Value>
+            </Setter>
             <Setter Property="IsVisible">
                 <Setter.Value>
                     <MultiBinding Converter="{x:Static BoolConverters.Or}">
@@ -30,12 +38,6 @@
             <ControlTemplate>
                 <Grid RowDefinitions="Auto, Auto, *, Auto">
                     <material:AppBar Header="{TemplateBinding Header}">
-                        <material:AppBar.IsBackButtonVisible>
-                            <MultiBinding Converter="{StaticResource MultiNotEqualConverter}">
-                                <Binding Path="$parent[NavigationPage].NavigationStack[0]"></Binding>
-                                <Binding Path="$parent[ContentPage]"></Binding>
-                            </MultiBinding>
-                        </material:AppBar.IsBackButtonVisible>
                         <ContentPresenter Name="PART_TopCommandBar"
                                           HorizontalContentAlignment="Stretch"
                                           IsVisible="False"/>
