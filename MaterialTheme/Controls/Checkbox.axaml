@@ -1,0 +1,215 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    x:ClassModifier="internal">
+  <Design.PreviewWith>
+    <Border Padding="20">
+      <StackPanel Spacing="20">
+        <CheckBox>Unchecked</CheckBox>
+        <CheckBox IsChecked="True" >Checked</CheckBox>
+        <CheckBox IsThreeState="True" IsChecked="{x:Null}">Indeterminate</CheckBox>
+        <CheckBox Width="160">Checkbox should wrap its text</CheckBox>
+        <TextBlock Text="&#xf88b;" FontFamily="{StaticResource MaterialSymbols}" VerticalAlignment="Bottom" FontSize="24" Background="Red"></TextBlock>
+      </StackPanel>
+    </Border>
+  </Design.PreviewWith>
+
+  <!-- ============ MD3 tokens: CheckBox ============ -->
+  <!-- Target size (touch target) -->
+  <x:Double x:Key="CheckBoxTargetSize">48</x:Double>
+  <!-- State-layer (hover/pressed ripple) size -->
+  <x:Double x:Key="CheckBoxStateLayerSize">40</x:Double>
+  <!-- Container (the visible box) size -->
+  <x:Double x:Key="CheckBoxContainerSize">18</x:Double>
+  <CornerRadius x:Key="CheckBoxContainerCornerRadius">2</CornerRadius>
+  <Thickness x:Key="CheckBoxBorderThemeThickness">2</Thickness>
+  <x:Double x:Key="CheckBoxMinHeight">48</x:Double>
+
+  <!-- Glyphs: MaterialSymbols codepoints -->
+  <StreamGeometry x:Key="CheckBoxGlyphChecked">
+    M10,16.4 L6,12 L7.4,10.6 L10,13.2 L16.6,6.6 L18,8 L10,16.4 Z
+  </StreamGeometry>
+   <StreamGeometry x:Key="CheckBoxGlyphIndeterminate">
+    M6,13 V11 H18 V13 H6 Z
+  </StreamGeometry>
+  <!-- ============ MD3 color roles -> palette ============ -->
+  <!-- Unselected: outline follows OnSurfaceVariant, no fill -->
+  <!-- Selected (checked/indeterminate): container = Primary, icon = OnPrimary -->
+  <!-- State layers: 8% on hover, 12% on pressed, colored by the current selection color -->
+  <SolidColorBrush x:Key="CheckBoxStateLayerUncheckedPointerOver" Color="{DynamicResource OnSurfaceVariant}" Opacity="0.08" />
+  <SolidColorBrush x:Key="CheckBoxStateLayerUncheckedPressed" Color="{DynamicResource OnSurfaceVariant}" Opacity="0.12" />
+  <SolidColorBrush x:Key="CheckBoxStateLayerCheckedPointerOver" Color="{DynamicResource Primary}" Opacity="0.08" />
+  <SolidColorBrush x:Key="CheckBoxStateLayerCheckedPressed" Color="{DynamicResource Primary}" Opacity="0.12" />
+
+  <!-- Disabled: OnSurface at 38% opacity, per MD3 disabled-content spec -->
+  <SolidColorBrush x:Key="CheckBoxOutlineBrushDisabled" Color="{DynamicResource OnSurface}" Opacity="0.38" />
+  <SolidColorBrush x:Key="CheckBoxContainerBrushDisabled" Color="{DynamicResource OnSurface}" Opacity="0.38" />
+
+  <ControlTheme x:Key="{x:Type CheckBox}" TargetType="CheckBox">
+    <Setter Property="Padding" Value="{DynamicResource CheckBoxPadding}" />
+    <Setter Property="HorizontalAlignment" Value="Left" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+    <Setter Property="HorizontalContentAlignment" Value="Left" />
+    <Setter Property="VerticalContentAlignment" Value="Center" />
+    <Setter Property="MinHeight" Value="{DynamicResource CheckBoxMinHeight}" />
+    <Setter Property="Foreground" Value="{DynamicResource OnSurface}" />
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderBrush" Value="Transparent" />
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Grid x:Name="RootGrid" ColumnDefinitions="Auto,*">
+          <!-- Touch target -->
+          <Grid Width="{DynamicResource CheckBoxTargetSize}"
+                Height="{DynamicResource CheckBoxTargetSize}"
+                VerticalAlignment="Top">
+
+            <!-- State layer: circular hover/pressed ripple, centered in the target zone -->
+            <Ellipse x:Name="StateLayer"
+                     Width="{DynamicResource CheckBoxStateLayerSize}"
+                     Height="{DynamicResource CheckBoxStateLayerSize}"
+                     Fill="Transparent" />
+
+            <!-- Container: the visible 18x18 box -->
+            <Border x:Name="CheckContainer"
+                    Width="{DynamicResource CheckBoxContainerSize}"
+                    Height="{DynamicResource CheckBoxContainerSize}"
+                    CornerRadius="{DynamicResource CheckBoxContainerCornerRadius}"
+                    BorderThickness="{DynamicResource CheckBoxBorderThemeThickness}"
+                    BorderBrush="{DynamicResource OnSurfaceVariant}"
+                    Background="Transparent"
+                    UseLayoutRounding="False">
+
+              <!-- Icon: MaterialSymbols glyph, filling the container -->
+              <Path x:Name="CheckGlyph"
+                         Data="{DynamicResource CheckBoxGlyphChecked}"
+                         Fill="{DynamicResource OnPrimary}"
+                         HorizontalAlignment="Center"
+                         Height="24"
+                         Width="24"
+                         VerticalAlignment="Center"
+                         Opacity="0" />
+            </Border>
+          </Grid>
+
+          <ContentPresenter x:Name="PART_ContentPresenter"
+                             ContentTemplate="{TemplateBinding ContentTemplate}"
+                             Content="{TemplateBinding Content}"
+                             Margin="{TemplateBinding Padding}"
+                             HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                             TextWrapping="Wrap"
+                             Grid.Column="1" />
+        </Grid>
+      </ControlTemplate>
+    </Setter>
+
+    <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+      <Setter Property="RecognizesAccessKey" Value="True" />
+    </Style>
+
+    <!-- ================= Unchecked ================= -->
+
+    <!-- Unchecked PointerOver -->
+    <Style Selector="^:pointerover">
+      <Style Selector="^ /template/ Ellipse#StateLayer">
+        <Setter Property="Fill" Value="{DynamicResource CheckBoxStateLayerUncheckedPointerOver}" />
+      </Style>
+    </Style>
+
+    <!-- Unchecked Pressed -->
+    <Style Selector="^:pressed">
+      <Style Selector="^ /template/ Ellipse#StateLayer">
+        <Setter Property="Fill" Value="{DynamicResource CheckBoxStateLayerUncheckedPressed}" />
+      </Style>
+    </Style>
+
+    <!-- Unchecked Disabled -->
+    <Style Selector="^:disabled">
+      <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Foreground" Value="{DynamicResource CheckBoxOutlineBrushDisabled}" />
+      </Style>
+
+      <Style Selector="^ /template/ Border#CheckContainer">
+        <Setter Property="BorderBrush" Value="{DynamicResource CheckBoxOutlineBrushDisabled}" />
+      </Style>
+    </Style>
+
+    <!-- ================= Checked ================= -->
+    <Style Selector="^:checked">
+      <Style Selector="^ /template/ Border#CheckContainer">
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Background" Value="{DynamicResource Primary}" />
+        <Setter Property="Padding" Value="0,2,0,0"></Setter>
+      </Style>
+
+      <Style Selector="^ /template/ Path#CheckGlyph">
+        <Setter Property="Data" Value="{DynamicResource CheckBoxGlyphChecked}" />
+        <Setter Property="Fill" Value="{DynamicResource OnPrimary}" />
+        <Setter Property="Opacity" Value="1" />
+      </Style>
+
+      <!-- Checked PointerOver -->
+      <Style Selector="^:pointerover">
+        <Style Selector="^ /template/ Ellipse#StateLayer">
+          <Setter Property="Fill" Value="{DynamicResource CheckBoxStateLayerCheckedPointerOver}" />
+        </Style>
+      </Style>
+
+      <!-- Checked Pressed -->
+      <Style Selector="^:pressed">
+        <Style Selector="^ /template/ Ellipse#StateLayer">
+          <Setter Property="Fill" Value="{DynamicResource CheckBoxStateLayerCheckedPressed}" />
+        </Style>
+      </Style>
+
+      <!-- Checked Disabled -->
+      <Style Selector="^:disabled">
+        <Style Selector="^ /template/ Border#CheckContainer">
+          <Setter Property="Background" Value="{DynamicResource CheckBoxContainerBrushDisabled}" />
+        </Style>
+
+        <Style Selector="^ /template/ Path#CheckGlyph">
+          <Setter Property="Fill" Value="{DynamicResource Surface}" />
+        </Style>
+      </Style>
+    </Style>
+
+    <!-- ================= Indeterminate ================= -->
+    <Style Selector="^:indeterminate">
+      <Style Selector="^ /template/ Border#CheckContainer">
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Background" Value="{DynamicResource Primary}" />
+      </Style>
+
+      <Style Selector="^ /template/ Path#CheckGlyph">
+        <Setter Property="Data" Value="{DynamicResource CheckBoxGlyphIndeterminate}" />
+        <Setter Property="Fill" Value="{DynamicResource OnPrimary}" />
+        <Setter Property="Opacity" Value="1" />
+      </Style>
+
+      <!-- Indeterminate PointerOver -->
+      <Style Selector="^:pointerover">
+        <Style Selector="^ /template/ Ellipse#StateLayer">
+          <Setter Property="Fill" Value="{DynamicResource CheckBoxStateLayerCheckedPointerOver}" />
+        </Style>
+      </Style>
+
+      <!-- Indeterminate Pressed -->
+      <Style Selector="^:pressed">
+        <Style Selector="^ /template/ Ellipse#StateLayer">
+          <Setter Property="Fill" Value="{DynamicResource CheckBoxStateLayerCheckedPressed}" />
+        </Style>
+      </Style>
+
+      <!-- Indeterminate Disabled -->
+      <Style Selector="^:disabled">
+        <Style Selector="^ /template/ Border#CheckContainer">
+          <Setter Property="Background" Value="{DynamicResource CheckBoxContainerBrushDisabled}" />
+        </Style>
+
+        <Style Selector="^ /template/ Path#CheckGlyph">
+          <Setter Property="Fill" Value="{DynamicResource Surface}" />
+        </Style>
+      </Style>
+    </Style>
+  </ControlTheme>
+</ResourceDictionary>
