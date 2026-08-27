@@ -1,12 +1,16 @@
 ﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Design.PreviewWith>
+        <StackPanel Spacing="0">
+            <ToggleButton Content="Toggle"></ToggleButton>
+            <ToggleButton Content="Toggle"></ToggleButton>
+            <ToggleButton Content="Toggle"></ToggleButton>
+        </StackPanel>
     </Design.PreviewWith>
     <ControlTheme x:Key="ToggleButtonBase" TargetType="ToggleButton">
         <Setter Property="VerticalAlignment" Value="Center"></Setter>
         <Setter Property="HorizontalAlignment" Value="Left"></Setter>
         <Setter Property="Foreground" Value="{DynamicResource Primary}"></Setter>
-        <Setter Property="BorderThickness" Value="2"/>
         <Setter Property="Padding" Value="24,0,24,0"></Setter>
         <Setter Property="CornerRadius" Value="25"></Setter>
         <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
