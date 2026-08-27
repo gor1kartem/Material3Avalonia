@@ -66,15 +66,15 @@
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             CornerRadius="{TemplateBinding CornerRadius}"
-                            ClipToBounds="True"
-                            Padding="{TemplateBinding Padding}">
-                            <ContentPresenter Name="PART_ContentPresenter"
-                                              ContentTemplate="{TemplateBinding ContentTemplate}"
-                                              Content="{TemplateBinding Content}"
-                                              VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                                              HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" />
-                    </Border>
-                    <Border x:Name="PART_StateLayer" Opacity="0.08"></Border>
+                            ClipToBounds="True"></Border>
+                        <Border x:Name="StateLayer" Opacity="0" Background="{TemplateBinding Foreground}"></Border>
+
+                        <ContentPresenter Name="PART_ContentPresenter"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          Content="{TemplateBinding Content}"
+                                          VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" />
+
                 </Panel>
             </ControlTemplate>
         </Setter>
@@ -103,8 +103,8 @@
             <Setter Property="CornerRadius" Value="16"></Setter>
             <Setter Property="Foreground" Value="{DynamicResource OnSecondaryContainer}"></Setter>
         </Style>
-        <Style Selector="^:pointerover /template/ Border#PART_StateLayer">
-            <Setter Property="Background" Value="{DynamicResource OnSurface}"></Setter>
+        <Style Selector="^:pointerover /template/ Border#StateLayer">
+            <Setter Property="Opacity" Value="{StaticResource StateLayerHoverOpacity}"></Setter>
         </Style>
     </ControlTheme>
 
@@ -114,8 +114,7 @@
             <ControlTemplate>
                 <Border CornerRadius="{TemplateBinding CornerRadius}" ClipToBounds="True">
                     <ScrollViewer Name="PART_ScrollViewer">
-                        <ItemsPresenter Name="PART_ItemsPresenter" ItemsPanel="{TemplateBinding ItemsPanel}">
-                        </ItemsPresenter>
+                        <ItemsPresenter Name="PART_ItemsPresenter" ItemsPanel="{TemplateBinding ItemsPanel}"></ItemsPresenter>
                     </ScrollViewer>
                 </Border>
             </ControlTemplate>
@@ -137,7 +136,7 @@
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}">
                     <Panel>
-                    <Border x:Name="PART_StateLayer" Opacity="{StaticResource StateLayerOpacity}"></Border>
+                    <Border x:Name="PART_StateLayer" Opacity="0" Background="{TemplateBinding Foreground}"></Border>
                         <ContentPresenter Name="PART_ContentPresenter"
                                           ContentTemplate="{TemplateBinding ContentTemplate}"
                                           Content="{TemplateBinding Content}"
@@ -164,7 +163,7 @@
             <Setter Property="RenderTransform" Value="scale(0.97)" />
         </Style>
         <Style Selector="^:pointerover /template/ Border#PART_StateLayer">
-            <Setter Property="Background" Value="{DynamicResource OnSecondaryContainer}"></Setter>
+            <Setter Property="Opacity" Value="{StaticResource StateLayerHoverOpacity}"></Setter>
         </Style>
         <Style Selector="^:selected">
             <Setter Property="CornerRadius" Value="20"></Setter>
@@ -177,9 +176,6 @@
                     </Transitions>
                 </Setter>
             </Style>
-        </Style>
-        <Style Selector="^:selected:pointerover /template/ Border#PART_StateLayer">
-            <Setter Property="Background" Value="{DynamicResource OnSecondary}"></Setter>
         </Style>
     </ControlTheme>
 </ResourceDictionary>

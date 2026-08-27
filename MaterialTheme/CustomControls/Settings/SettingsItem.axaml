@@ -20,7 +20,7 @@
             <ControlTemplate>
                 <Border ClipToBounds="True" CornerRadius="{TemplateBinding CornerRadius}" Background="{TemplateBinding Background}">
                     <Panel>
-                        <Border x:Name="PART_StateLayer" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Opacity="0.08"></Border>
+                        <Border x:Name="PART_StateLayer" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Opacity="0.08" Background="{TemplateBinding Foreground}"></Border>
                         <Grid ColumnDefinitions="40, *, Auto" RowDefinitions="Auto, Auto" ColumnSpacing="12" Margin="16, 16, 16, 16">
                             <ContentPresenter Content="{TemplateBinding Icon}" Grid.RowSpan="2" VerticalAlignment="Center"></ContentPresenter>
                             <StackPanel Grid.Column="1" Grid.RowSpan="2" VerticalAlignment="Center">
@@ -35,10 +35,5 @@
         </Setter>
         <Setter Property="Background" Value="{DynamicResource Surface}"></Setter>
         <Setter Property="Foreground" Value="{DynamicResource OnSurface}"></Setter>
-        <Style Selector="^:pointerover /template/ Border#PART_StateLayer">
-            <Setter Property="Background" Value="{DynamicResource OnSurface}">
-            </Setter>
-        </Style>
-        
     </ControlTheme>
 </ResourceDictionary>

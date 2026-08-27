@@ -34,12 +34,6 @@
   <!-- ============ MD3 color roles -> palette ============ -->
   <!-- Unselected: outline follows OnSurfaceVariant, no fill -->
   <!-- Selected (checked/indeterminate): container = Primary, icon = OnPrimary -->
-  <!-- State layers: 8% on hover, 12% on pressed, colored by the current selection color -->
-  <SolidColorBrush x:Key="CheckBoxStateLayerUncheckedPointerOver" Color="{DynamicResource OnSurfaceVariant}" Opacity="0.08" />
-  <SolidColorBrush x:Key="CheckBoxStateLayerUncheckedPressed" Color="{DynamicResource OnSurfaceVariant}" Opacity="0.12" />
-  <SolidColorBrush x:Key="CheckBoxStateLayerCheckedPointerOver" Color="{DynamicResource Primary}" Opacity="0.08" />
-  <SolidColorBrush x:Key="CheckBoxStateLayerCheckedPressed" Color="{DynamicResource Primary}" Opacity="0.12" />
-
   <!-- Disabled: OnSurface at 38% opacity, per MD3 disabled-content spec -->
   <SolidColorBrush x:Key="CheckBoxOutlineBrushDisabled" Color="{DynamicResource OnSurface}" Opacity="0.38" />
   <SolidColorBrush x:Key="CheckBoxContainerBrushDisabled" Color="{DynamicResource OnSurface}" Opacity="0.38" />
@@ -66,7 +60,8 @@
             <Ellipse x:Name="StateLayer"
                      Width="{DynamicResource CheckBoxStateLayerSize}"
                      Height="{DynamicResource CheckBoxStateLayerSize}"
-                     Fill="Transparent" />
+                     Fill="{TemplateBinding Foreground}"
+                     Opacity="0" />
 
             <!-- Container: the visible 18x18 box -->
             <Border x:Name="CheckContainer"
@@ -80,7 +75,7 @@
 
               <!-- Icon: MaterialSymbols glyph, filling the container -->
               <Path x:Name="CheckGlyph"
-                         Data="{DynamicResource CheckBoxGlyphChecked}"
+                         Data="{StaticResource CheckBoxGlyphChecked}"
                          Fill="{DynamicResource OnPrimary}"
                          HorizontalAlignment="Center"
                          Height="24"
@@ -108,18 +103,12 @@
 
     <!-- ================= Unchecked ================= -->
 
-    <!-- Unchecked PointerOver -->
-    <Style Selector="^:pointerover">
-      <Style Selector="^ /template/ Ellipse#StateLayer">
-        <Setter Property="Fill" Value="{DynamicResource CheckBoxStateLayerUncheckedPointerOver}" />
-      </Style>
+    <Style Selector="^:pointerover /template/ Ellipse#StateLayer">
+      <Setter Property="Opacity" Value="{StaticResource StateLayerHoverOpacity}" />
     </Style>
 
-    <!-- Unchecked Pressed -->
-    <Style Selector="^:pressed">
-      <Style Selector="^ /template/ Ellipse#StateLayer">
-        <Setter Property="Fill" Value="{DynamicResource CheckBoxStateLayerUncheckedPressed}" />
-      </Style>
+    <Style Selector="^:pressed /template/ Ellipse#StateLayer">
+      <Setter Property="Opacity" Value="{StaticResource StateLayerPressOpacity}" />
     </Style>
 
     <!-- Unchecked Disabled -->
@@ -147,20 +136,6 @@
         <Setter Property="Opacity" Value="1" />
       </Style>
 
-      <!-- Checked PointerOver -->
-      <Style Selector="^:pointerover">
-        <Style Selector="^ /template/ Ellipse#StateLayer">
-          <Setter Property="Fill" Value="{DynamicResource CheckBoxStateLayerCheckedPointerOver}" />
-        </Style>
-      </Style>
-
-      <!-- Checked Pressed -->
-      <Style Selector="^:pressed">
-        <Style Selector="^ /template/ Ellipse#StateLayer">
-          <Setter Property="Fill" Value="{DynamicResource CheckBoxStateLayerCheckedPressed}" />
-        </Style>
-      </Style>
-
       <!-- Checked Disabled -->
       <Style Selector="^:disabled">
         <Style Selector="^ /template/ Border#CheckContainer">
@@ -184,20 +159,6 @@
         <Setter Property="Data" Value="{DynamicResource CheckBoxGlyphIndeterminate}" />
         <Setter Property="Fill" Value="{DynamicResource OnPrimary}" />
         <Setter Property="Opacity" Value="1" />
-      </Style>
-
-      <!-- Indeterminate PointerOver -->
-      <Style Selector="^:pointerover">
-        <Style Selector="^ /template/ Ellipse#StateLayer">
-          <Setter Property="Fill" Value="{DynamicResource CheckBoxStateLayerCheckedPointerOver}" />
-        </Style>
-      </Style>
-
-      <!-- Indeterminate Pressed -->
-      <Style Selector="^:pressed">
-        <Style Selector="^ /template/ Ellipse#StateLayer">
-          <Setter Property="Fill" Value="{DynamicResource CheckBoxStateLayerCheckedPressed}" />
-        </Style>
       </Style>
 
       <!-- Indeterminate Disabled -->
