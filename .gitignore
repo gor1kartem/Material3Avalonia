@@ -4,3 +4,8 @@ obj/
 riderModule.iml
 /_ReSharper.Caches/
 .avalonia-build-tasks
+.idea
+.vs
+Properties/launchSettings.json
+MaterialTheme/Properties/launchSettings.json
+*.DotSettings.user
