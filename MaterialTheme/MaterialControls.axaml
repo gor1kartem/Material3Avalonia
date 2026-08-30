@@ -17,6 +17,7 @@
                 <MergeResourceInclude Source="Controls/RepeatButton.axaml"></MergeResourceInclude>
                 <MergeResourceInclude Source="Controls/ButtonSpinner.axaml"></MergeResourceInclude>
                 <MergeResourceInclude Source="Controls/ContentPage.axaml"></MergeResourceInclude>
+                <MergeResourceInclude Source="Controls/SplitButton.axaml"></MergeResourceInclude>
                 <MergeResourceInclude Source="Controls/Checkbox.axaml"></MergeResourceInclude>
                 <MergeResourceInclude Source="Controls/Window.axaml"></MergeResourceInclude>
                 <MergeResourceInclude Source="Controls/NavigationPage.axaml"></MergeResourceInclude>
