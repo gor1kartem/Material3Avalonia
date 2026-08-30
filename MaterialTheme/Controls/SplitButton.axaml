@@ -1,0 +1,106 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:material="clr-namespace:MaterialTheme.CustomControls">
+    <Design.PreviewWith>
+        <StackPanel Height="500">
+            <SplitButton Content="Content" Width="500">
+                <SplitButton.Flyout>
+                    <MenuFlyout Placement="BottomEdgeAlignedRight ">
+                        <MenuItem Header="Item 1">
+                            <MenuItem Header="Subitem 1" />
+                            <MenuItem Header="Subitem 2" />
+                            <MenuItem Header="Subitem 3" />
+                        </MenuItem>
+                        <MenuItem Header="Item 2"
+                                  InputGesture="Ctrl+A" />
+                        <MenuItem Header="Item 3" />
+                    </MenuFlyout>
+                </SplitButton.Flyout>
+            </SplitButton>
+        </StackPanel>
+    </Design.PreviewWith>
+    <ControlTheme TargetType="SplitButton" x:Key="{x:Type SplitButton}">
+        <Setter Property="HorizontalContentAlignment" Value="Center" ></Setter>
+        <Style Selector="^ /template/ Button.SplitButtonComponent">
+            <Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+                <Setter Property="RecognizesAccessKey" Value="True"></Setter>
+            </Style>
+            <Setter Property="CornerRadius" Value="4,26, 26,4"></Setter>
+            <Setter Property="Padding" Value="13,0,13,0"></Setter>
+            <Setter Property="VerticalAlignment" Value="Stretch"></Setter>
+            <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+            <Setter Property="Transitions">
+                <Setter.Value>
+                    <Transitions>
+                        <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.150"
+                                                       Easing="CubicEaseOut">
+                        </TransformOperationsTransition>
+                        <CornerRadiusTransition Property="CornerRadius" Easing="{StaticResource StandardFastSpacialEasing}" Duration="0:0:0.350"></CornerRadiusTransition>
+                    </Transitions>
+                </Setter.Value>
+            </Setter>
+            <Style Selector="^:pressed">
+                <Setter Property="CornerRadius" Value="8,26, 26,8"></Setter>
+            </Style>
+        </Style>
+        <Setter Property="Padding" Value="28,0,24,0"></Setter>
+        <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+        <Setter Property="Background" Value="{DynamicResource Primary}"></Setter>
+        <Setter Property="Foreground" Value="{DynamicResource OnPrimary}"></Setter>
+        <ControlTheme.Resources>
+            <StreamGeometry x:Key="ArrowDropDownGeometry">
+                M12,15.4 L6,9.4 L7.4,8 L12,12.6 L16.6,8 L18,9.4 L12,15.4 Z
+            </StreamGeometry>
+            <CornerRadius x:Key="MainButtonPressedCornerRadius">25,8,8,25</CornerRadius>
+        </ControlTheme.Resources>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border CornerRadius="{TemplateBinding CornerRadius}" ClipToBounds="{TemplateBinding ClipToBounds}">
+                    <DockPanel HorizontalSpacing="2">
+                            <Button x:Name="PART_SecondaryButton" Classes="SplitButtonComponent" DockPanel.Dock="Right">
+                                    <Path x:Name="ArrowIcon" Data="{StaticResource ArrowDropDownGeometry}" 
+                                          Fill="{DynamicResource OnPrimary}" Width="12" Stretch="Uniform"></Path>
+                            </Button>
+
+                        <Button x:Name="PART_PrimaryButton"
+                                Foreground="{TemplateBinding Foreground}"
+                                Background="{TemplateBinding Background}"
+                                BorderThickness="{TemplateBinding BorderThickness, Converter={StaticResource PrimaryButtonBorderMultiplier}}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                Content="{TemplateBinding Content}"
+                                ContentTemplate="{TemplateBinding ContentTemplate}"
+                                Command="{TemplateBinding Command}"
+                                CommandParameter="{TemplateBinding CommandParameter}"
+                                CornerRadius="25,4,4,25"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Padding="{TemplateBinding Padding}"
+                                Focusable="False"
+                                KeyboardNavigation.IsTabStop="False" />
+                    </DockPanel>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^ /template/ Button#PART_SecondaryButton > Path">
+            <Setter Property="Transitions">
+                <Transitions>
+                    <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.150"
+                                                   Easing="CubicEaseOut">
+                    </TransformOperationsTransition>
+                    <ThicknessTransition Property="Margin" Duration="0:0:0.150"
+                                         Easing="CubicEaseOut"></ThicknessTransition>
+                </Transitions>
+            </Setter>
+            <Setter Property="Margin" Value="0, 1, 0,0"></Setter>
+        </Style>
+        <Style Selector="^:flyout-open /template/ Button#PART_SecondaryButton">
+            <Setter Property="CornerRadius" Value="26"></Setter>
+        </Style>
+        <Style Selector="^:flyout-open /template/ Button#PART_SecondaryButton > Path">
+            <Setter Property="RenderTransform" Value="rotate(180deg)"></Setter>
+            <Setter Property="Margin" Value="0,0,0,0"></Setter>
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>
