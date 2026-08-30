@@ -29,6 +29,7 @@
         </Style>
     </ControlTheme>
     <ControlTheme x:Key="{x:Type Slider}" TargetType="Slider">
+        <Setter Property="UseLayoutRounding" Value="False"></Setter>
         <Setter Property="Background" Value="{DynamicResource SecondaryContainer}"></Setter>
         <Setter Property="Foreground" Value="{DynamicResource Primary}"></Setter>
         <Style Selector="^:horizontal">
