@@ -45,7 +45,8 @@
                             x:Name="PART_Border" ClipToBounds="{TemplateBinding ClipToBounds}">
                         <Panel Opacity="{TemplateBinding Opacity}">
                             <Border x:Name="PART_StateLayer" Margin="-2" CornerRadius="{TemplateBinding CornerRadius}"
-                                    Opacity="{StaticResource StateLayerHoverOpacity}" Background="{TemplateBinding Foreground}">
+                                    Opacity="0" 
+                                    Background="{TemplateBinding Foreground}">
                             </Border>
                             <ContentPresenter x:Name="PART_ContentPresenter"
                                               Content="{TemplateBinding Content}"
@@ -61,10 +62,16 @@
             </Setter>
             <Style Selector="^:pressed">
                 <Setter Property="RenderTransform" Value="scale(0.97)" />
+                <Style Selector="^ /template/ Border#PART_StateLayer">
+                    <Setter Property="Opacity" Value="{StaticResource StateLayerPressOpacity}"></Setter>
+                </Style>
             </Style>
             <Style Selector="^:disabled">
                 <Setter Property="Background" Value="{DynamicResource DisabledBorderBrush}"></Setter>
                 <Setter Property="Foreground" Value="{DynamicResource DisabledTextBrush}"></Setter>
+            </Style>
+            <Style Selector="^:pointerover /template/ Border#PART_StateLayer">
+                <Setter Property="Opacity" Value="{StaticResource StateLayerHoverOpacity}"></Setter>
             </Style>
         </ControlTheme>
     
