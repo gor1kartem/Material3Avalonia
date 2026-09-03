@@ -19,7 +19,9 @@
         <Setter Property="Background" Value="{DynamicResource SurfaceContainerLow}"></Setter>
         <Setter Property="Transitions">
             <Transitions>
-                <CornerRadiusTransition Property="CornerRadius" Easing="{StaticResource StandardFastSpacialEasing}" Duration="0:0:0.350"></CornerRadiusTransition>
+                <CornerRadiusTransition Property="CornerRadius" Easing="{StaticResource StandardFastSpacialEasing}"
+                                        Duration="0:0:0.350">
+                </CornerRadiusTransition>
                 <BrushTransition Duration="0.150" Property="Background"></BrushTransition>
                 <BrushTransition Duration="0.150" Property="Foreground"></BrushTransition>
                 <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.150"
@@ -29,29 +31,40 @@
         </Setter>
         <Setter Property="Template">
             <ControlTemplate>
-                <ContentPresenter x:Name="PART_ContentPresenter"
-                                  Content="{TemplateBinding Content}"
-                                  Padding="{TemplateBinding Padding}"
-                                  ContentTemplate="{TemplateBinding ContentTemplate}"
-                                  RecognizesAccessKey="True"
-                                  HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" 
-                                  Background="{TemplateBinding Background}" 
-                                  CornerRadius="{TemplateBinding CornerRadius}"
-                                  BorderBrush="{TemplateBinding BorderBrush}"
-                                  BorderThickness="{TemplateBinding BorderThickness}"/>
+                <Border CornerRadius="{TemplateBinding CornerRadius}"                                           
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        ClipToBounds="{TemplateBinding ClipToBounds}">
+                    <Panel>
+                        <Border x:Name="StateLayer" Opacity="0" Background="{TemplateBinding Foreground}"></Border>
+                        <ContentPresenter x:Name="PART_ContentPresenter"
+                                          Content="{TemplateBinding Content}"
+                                          Margin="{TemplateBinding Padding}"
+                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                          RecognizesAccessKey="True"
+                                          HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Panel>
+                </Border>
 
             </ControlTemplate>
         </Setter>
         <Style Selector="^:checked">
             <Setter Property="CornerRadius" Value="12"></Setter>
         </Style>
+        <Style Selector="^:pointerover /template/ Border#StateLayer">
+            <Setter Property="Opacity" Value="{StaticResource StateLayerHoverOpacity}"></Setter>
+        </Style>
         <Style Selector="^:pressed">
             <Setter Property="CornerRadius" Value="8"></Setter>
-            <Setter Property="RenderTransform" Value="scale(0.97)"/>
+            <Setter Property="RenderTransform" Value="scale(0.97)" />
+            <Style Selector="^ /template/ Border#StateLayer">
+                <Setter Property="Opacity" Value="{StaticResource StateLayerPressOpacity}"></Setter>
+            </Style>
         </Style>
     </ControlTheme>
-    
+
     <ControlTheme BasedOn="{StaticResource ToggleButtonBase}" x:Key="Filled" TargetType="ToggleButton">
         <Style Selector="^:unchecked">
             <Setter Property="Background" Value="{DynamicResource SurfaceContainer}"></Setter>
@@ -67,7 +80,7 @@
         </Style>
     </ControlTheme>
     <ControlTheme BasedOn="{StaticResource Filled}" x:Key="{x:Type ToggleButton}" TargetType="ToggleButton"></ControlTheme>
-    
+
     <ControlTheme BasedOn="{StaticResource ToggleButtonBase}" x:Key="Transparent" TargetType="ToggleButton">
         <Style Selector="^:unchecked">
             <Setter Property="Background" Value="Transparent"></Setter>
