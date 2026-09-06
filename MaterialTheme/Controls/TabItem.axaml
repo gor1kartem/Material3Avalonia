@@ -2,15 +2,15 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Design.PreviewWith>
         <StackPanel>
-            <Border Width="600" Height="400">
-                <TabControl HorizontalAlignment="Stretch">
-                    <TabItem Header="Download"></TabItem>
+            <Border Width="600" >
+                <TabControl TabStripPlacement="Left" VerticalAlignment="Stretch">
+                    <TabItem Header="Downloadadsfsdafsad"></TabItem>
                     <TabItem Header="Test"></TabItem>
                     <TabItem Header="Test"></TabItem>
                 </TabControl>
             </Border>
-            <Border Width="400" Height="600">
-                <TabControl>
+            <Border Height="600">
+                <TabControl HorizontalAlignment="Stretch">
                     <TabItem Header="Arch">
                         <Border Background="AntiqueWhite" Height="100">
                             <TextBlock Text="Content" Foreground="Black" FontSize="20"/>
@@ -41,7 +41,7 @@
         <Setter Property="Foreground" Value="{DynamicResource OnSurfaceVariant}" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
-        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
         <Setter Property="Transitions">
             <Transitions>
                 <BrushTransition Property="Foreground" Duration="0:0:0.2" />
@@ -49,20 +49,20 @@
         </Setter>
         <Setter Property="Template">
             <ControlTemplate>
-                <Grid ClipToBounds="True">
+                <Panel ClipToBounds="True">
                     <Border x:Name="PART_StateLayer"
                             Background="{TemplateBinding Foreground}"
                             Opacity="0" />
                     <!-- This grid takes the Header's desired width, so the indicator
                          follows the label rather than stretching across the tab. -->
                     <Grid HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                          VerticalAlignment="Stretch">
+                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}" x:Name="RootGrid">
                         <ContentPresenter x:Name="PART_ContentPresenter"
                                           FontWeight="SemiBold"
                                           Content="{TemplateBinding Header}"
                                           ContentTemplate="{TemplateBinding HeaderTemplate}"
-                                          VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                                          HorizontalAlignment="Center"/>
+                                          VerticalContentAlignment="Center"
+                                          HorizontalAlignment="Center" />
                         <Border x:Name="PART_ActiveIndicator"
                                 Height="3"
                                 MinWidth="24"
@@ -71,7 +71,7 @@
                                 CornerRadius="999, 999, 0,0"
                                 HorizontalAlignment="Stretch"
                                 VerticalAlignment="Bottom"
-                                Opacity="0">
+                                Opacity="0" >
                             <Border.Transitions>
                                 <Transitions>
                                     <DoubleTransition Property="Opacity" Duration="0:0:0.2" />
@@ -79,7 +79,7 @@
                             </Border.Transitions>
                         </Border>
                     </Grid>
-                </Grid>
+                </Panel>
             </ControlTemplate>
         </Setter>
         <Style Selector="^:selected /template/ Border#PART_ActiveIndicator">
@@ -97,6 +97,43 @@
         <Style Selector="^:disabled">
             <Setter Property="Opacity" Value="0.38" />
         </Style>
+        <Style Selector="^[TabStripPlacement=Left] /template/ Border#PART_ActiveIndicator, ^[TabStripPlacement=Right] /template/ Border#PART_ActiveIndicator">
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            <Setter Property="Width" Value="3"></Setter>
+            <Setter Property="MinHeight" Value="24"></Setter>
+            <Setter Property="Margin" Value="0, 2"></Setter>
+            <Setter Property="MinWidth">
+                <Setter.Value>
+                    <x:Double>NaN</x:Double>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style Selector="^[TabStripPlacement=Left] /template/ Border#PART_ActiveIndicator">
+            <Setter Property="HorizontalAlignment" Value="Right"></Setter>
+            <Setter Property="CornerRadius" Value="99, 0, 0, 99"></Setter>
+        </Style>
+        <Style Selector="^[TabStripPlacement=Right] /template/ Border#PART_ActiveIndicator">
+            <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            <Setter Property="CornerRadius" Value="0, 99, 99, 0"></Setter>
+        </Style>
+        <Style Selector="^[TabStripPlacement=Left] /template/ Grid#RootGrid, ^[TabStripPlacement=Right] /template/ Grid#RootGrid">
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
+        </Style>
+        <Style Selector="^[TabStripPlacement=Bottom] /template/ Border#PART_ActiveIndicator">
+            <Setter Property="VerticalAlignment" Value="Top"></Setter>
+            <Setter Property="CornerRadius" Value="99, 99, 0, 0"></Setter>
+        </Style>
+        <Style Selector="^[TabStripPlacement=Left] /template/ ContentPresenter#PART_ContentPresenter, ^[TabStripPlacement=Right] /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Margin" Value="8"></Setter>
+        </Style>
+        
+        <Style Selector="^[TabStripPlacement=Bottom] /template/ Border#PART_ActiveIndicator">
+            <Setter Property="VerticalAlignment" Value="Top"></Setter>
+            <Setter Property="CornerRadius" Value="99, 99, 0, 0"></Setter>
+        </Style>
+        
     </ControlTheme>
     <ControlTheme x:Key="{x:Type TabItem}" TargetType="TabItem" BasedOn="{StaticResource TabItemBase}"></ControlTheme>
     

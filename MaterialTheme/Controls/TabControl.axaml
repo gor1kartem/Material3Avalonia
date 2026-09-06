@@ -3,12 +3,12 @@
                     x:ClassModifier="internal">
   <Design.PreviewWith>
     <Border Width="400">
-      <TabControl>
+      <TabControl TabStripPlacement="Left">
         <TabItem Header="Arch">
           <Border Background="AntiqueWhite" Height="100">
             <TextBlock Text="Content" Foreground="Black" FontSize="20"/>
           </Border>
-        </TabItem>        <TabItem Header="Arfasdfdsach">
+        </TabItem>        <TabItem Header="Arfasdfdsachsadfadsfsadf">
           <Border Background="AntiqueWhite" Height="100">
             <TextBlock Text="Content" Foreground="Black" FontSize="20"/>
           </Border>
@@ -55,11 +55,10 @@
       </ControlTemplate>
     </Setter>
 
-    <Style Selector="^[TabStripPlacement=Left] /template/ ItemsPresenter#PART_ItemsPresenter > WrapPanel">
-      <Setter Property="Orientation" Value="Vertical" />
-    </Style>
-    <Style Selector="^[TabStripPlacement=Right] /template/ ItemsPresenter#PART_ItemsPresenter > WrapPanel">
-      <Setter Property="Orientation" Value="Vertical" />
+    <Style Selector="^[TabStripPlacement=Left] /template/ ItemsPresenter#PART_ItemsPresenter > UniformGrid, 
+    ^[TabStripPlacement=Right] /template/ ItemsPresenter#PART_ItemsPresenter > UniformGrid">
+      <Setter Property="Rows" Value="0" />
+      <Setter Property="Columns" Value="1"></Setter>
     </Style>
   </ControlTheme>
 </ResourceDictionary>
