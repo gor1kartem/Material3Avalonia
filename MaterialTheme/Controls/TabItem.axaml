@@ -1,14 +1,114 @@
 ﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Design.PreviewWith>
-        <Border Width="600" Height="400">
-            <TabControl Theme="{StaticResource ConnectedButtonGroupTab}" HorizontalAlignment="Stretch">
-                <TabItem Header="Download"></TabItem>
-                <TabItem Header="Test"></TabItem>
-                <TabItem Header="Test"></TabItem>
-            </TabControl>
-        </Border>
+        <StackPanel>
+            <Border Width="600" Height="400">
+                <TabControl HorizontalAlignment="Stretch">
+                    <TabItem Header="Download"></TabItem>
+                    <TabItem Header="Test"></TabItem>
+                    <TabItem Header="Test"></TabItem>
+                </TabControl>
+            </Border>
+            <Border Width="400" Height="600">
+                <TabControl>
+                    <TabItem Header="Arch">
+                        <Border Background="AntiqueWhite" Height="100">
+                            <TextBlock Text="Content" Foreground="Black" FontSize="20"/>
+                        </Border>
+                    </TabItem>        <TabItem Header="Arfasdfdsach">
+                        <Border Background="AntiqueWhite" Height="100">
+                            <TextBlock Text="Content" Foreground="Black" FontSize="20"/>
+                        </Border>
+                    </TabItem>
+                    <TabItem Header="Leaf">
+                        <Border Background="Green" Height="100" />
+                    </TabItem>
+                    <TabItem Header="Disabled" IsEnabled="False" />
+                </TabControl>
+            </Border>
+        </StackPanel>
     </Design.PreviewWith>
+
+    <!-- Default Material 3 primary tab. Use a custom Header (for example, an icon
+         and label StackPanel) when an icon is required. -->
+    <ControlTheme x:Key="TabItemBase" TargetType="TabItem">
+        <Setter Property="Height" Value="48" />
+        <Setter Property="MinWidth" Value="90" />
+        <Setter Property="Padding" Value="12,0" />
+        <Setter Property="FontFamily" Value="{DynamicResource Roboto}" />
+        <Setter Property="FontSize" Value="{DynamicResource FontSizeTitleSmall}" />
+        <Setter Property="FontWeight" Value="{DynamicResource FontWeightMedium}" />
+        <Setter Property="Foreground" Value="{DynamicResource OnSurfaceVariant}" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Transitions">
+            <Transitions>
+                <BrushTransition Property="Foreground" Duration="0:0:0.2" />
+            </Transitions>
+        </Setter>
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid ClipToBounds="True">
+                    <Border x:Name="PART_StateLayer"
+                            Background="{TemplateBinding Foreground}"
+                            Opacity="0" />
+                    <!-- This grid takes the Header's desired width, so the indicator
+                         follows the label rather than stretching across the tab. -->
+                    <Grid HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                          VerticalAlignment="Stretch">
+                        <ContentPresenter x:Name="PART_ContentPresenter"
+                                          FontWeight="SemiBold"
+                                          Content="{TemplateBinding Header}"
+                                          ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                          VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          HorizontalAlignment="Center"/>
+                        <Border x:Name="PART_ActiveIndicator"
+                                Height="3"
+                                MinWidth="24"
+                                Margin="2,0"
+                                Background="{DynamicResource Primary}"
+                                CornerRadius="999, 999, 0,0"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Bottom"
+                                Opacity="0">
+                            <Border.Transitions>
+                                <Transitions>
+                                    <DoubleTransition Property="Opacity" Duration="0:0:0.2" />
+                                </Transitions>
+                            </Border.Transitions>
+                        </Border>
+                    </Grid>
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^:selected /template/ Border#PART_ActiveIndicator">
+            <Setter Property="Opacity" Value="1" />
+        </Style>
+        <Style Selector="^:pointerover /template/ Border#PART_StateLayer">
+            <Setter Property="Opacity" Value="{StaticResource StateLayerHoverOpacity}" />
+        </Style>
+        <Style Selector="^:focus-visible /template/ Border#PART_StateLayer">
+            <Setter Property="Opacity" Value="{StaticResource StateLayerFocusOpacity}" />
+        </Style>
+        <Style Selector="^:pressed /template/ Border#PART_StateLayer">
+            <Setter Property="Opacity" Value="{StaticResource StateLayerPressOpacity}" />
+        </Style>
+        <Style Selector="^:disabled">
+            <Setter Property="Opacity" Value="0.38" />
+        </Style>
+    </ControlTheme>
+    <ControlTheme x:Key="{x:Type TabItem}" TargetType="TabItem" BasedOn="{StaticResource TabItemBase}"></ControlTheme>
+    
+    <ControlTheme  x:Key="SecondaryTabItem" BasedOn="{StaticResource TabItemBase}" TargetType="TabItem">
+        <Style Selector="^ /template/ Border#PART_ActiveIndicator">
+            <Setter Property="Margin" Value="0"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
+            <Setter Property="CornerRadius" Value="0"></Setter>
+        </Style>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"></Setter>
+    </ControlTheme>
+
     <ControlTheme TargetType="TabControl" x:Key="ConnectedButtonGroupTab">
         <Setter Property="Margin" Value="0" />
         <Setter Property="ItemsPanel">

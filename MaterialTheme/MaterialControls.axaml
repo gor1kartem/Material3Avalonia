@@ -22,6 +22,7 @@
                 <MergeResourceInclude Source="Controls/Checkbox.axaml"></MergeResourceInclude>
                 <MergeResourceInclude Source="Controls/Window.axaml"></MergeResourceInclude>
                 <MergeResourceInclude Source="Controls/NavigationPage.axaml"></MergeResourceInclude>
+                <MergeResourceInclude Source="Controls/TabControl.axaml"></MergeResourceInclude>
                 <MergeResourceInclude Source="Controls/TabItem.axaml"></MergeResourceInclude>
                 <MergeResourceInclude Source="Controls/ProgressBar.axaml"></MergeResourceInclude>
                 <MergeResourceInclude Source="CustomControls/Settings/SettingsItem.axaml"></MergeResourceInclude>
