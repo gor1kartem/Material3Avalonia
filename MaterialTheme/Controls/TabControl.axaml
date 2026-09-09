@@ -2,53 +2,69 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     x:ClassModifier="internal">
   <Design.PreviewWith>
-    <Border Width="400">
-      <TabControl TabStripPlacement="Left">
-        <TabItem Header="Arch">
-          <Border Background="AntiqueWhite" Height="100">
-            <TextBlock Text="Content" Foreground="Black" FontSize="20"/>
-          </Border>
-        </TabItem>        <TabItem Header="Arfasdfdsachsadfadsfsadf">
-          <Border Background="AntiqueWhite" Height="100">
-            <TextBlock Text="Content" Foreground="Black" FontSize="20"/>
-          </Border>
-        </TabItem>
-        <TabItem Header="Leaf">
-          <Border Background="Green" Height="100" />
-        </TabItem>
-        <TabItem Header="Disabled" IsEnabled="False" />
+    <StackPanel Width="600">
+      <TabControl HorizontalContentAlignment="Left">
+        <TabItem Header="Downloadadsfsdafsad"></TabItem>
+        <TabItem Header="Test"></TabItem>
+        <TabItem Header="Test"></TabItem>
       </TabControl>
-    </Border>
+      <TabControl HorizontalContentAlignment="Right">
+        <TabItem Header="Downloadadsfsdafsad"></TabItem>
+        <TabItem Header="Test"></TabItem>
+        <TabItem Header="Test"></TabItem>
+      </TabControl>
+      <TabControl>
+        <TabItem Header="Downloadadsfsdafsad"></TabItem>
+        <TabItem Header="Test"></TabItem>
+        <TabItem Header="Test"></TabItem>
+      </TabControl>
+      <TabControl VerticalAlignment="Stretch" TabStripPlacement="Right">
+        <TabItem Header="Downloadadsfsdafsad"></TabItem>
+        <TabItem Header="Test"></TabItem>
+        <TabItem Header="Test"></TabItem>
+      </TabControl>
+      <TabControl VerticalAlignment="Stretch" TabStripPlacement="Left">
+        <TabItem Header="Downloadadsfsdafsad"></TabItem>
+        <TabItem Header="Test"></TabItem>
+        <TabItem Header="Test"></TabItem>
+      </TabControl>
+      <TabControl VerticalAlignment="Stretch" TabStripPlacement="Bottom">
+        <TabItem Header="Downloadadsfsdafsad"></TabItem>
+        <TabItem Header="Test"></TabItem>
+        <TabItem Header="Test"></TabItem>
+      </TabControl>
+    </StackPanel>
   </Design.PreviewWith>
 
   <ControlTheme x:Key="{x:Type TabControl}" TargetType="TabControl">
     <!-- Material 3 primary tabs: 48 dp container with a 3 dp active indicator. -->
-    <Setter Property="Margin" Value="0" />
     <Setter Property="Padding" Value="0" />
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="Foreground" Value="{DynamicResource OnSurfaceVariant}" />
     <Setter Property="TabStripPlacement" Value="Top" />
+    <Setter Property="BorderThickness" Value="0,0,0,1"></Setter>
+    <Setter Property="BorderBrush" Value="{DynamicResource OutlineVariant}"></Setter>
     <Setter Property="ItemsPanel">
       <ItemsPanelTemplate>
-        <UniformGrid Rows="1" />
+        <UniformGrid Rows="1" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
       </ItemsPanelTemplate>
     </Setter>
     <Setter Property="Template">
       <ControlTemplate>
-        <Border Background="{TemplateBinding Background}">
+        <Border Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}">
           <DockPanel>
-            <Border BorderThickness="0,0,0,1" BorderBrush="{DynamicResource OutlineVariant}" DockPanel.Dock="{TemplateBinding TabStripPlacement}">
+            <Border DockPanel.Dock="{TemplateBinding TabStripPlacement}">
               <ItemsPresenter Name="PART_ItemsPresenter"
                               ItemsPanel="{TemplateBinding ItemsPanel}"/>
             </Border>
-            <Panel ClipToBounds="True" Margin="{TemplateBinding Padding}">
+            <Panel ClipToBounds="True">
               <ContentPresenter Name="PART_SelectedContentHost2"
                                 HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                                 VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
-                                IsVisible="False" />
+                                IsVisible="False" Margin="{TemplateBinding Padding}"/>
               <ContentPresenter Name="PART_SelectedContentHost"
                                 HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" Margin="{TemplateBinding Padding}"/>
             </Panel>
           </DockPanel>
         </Border>
@@ -59,6 +75,10 @@
     ^[TabStripPlacement=Right] /template/ ItemsPresenter#PART_ItemsPresenter > UniformGrid">
       <Setter Property="Rows" Value="0" />
       <Setter Property="Columns" Value="1"></Setter>
+    </Style>
+    <Style Selector="^[TabStripPlacement=Left] /template/ ItemsPresenter#PART_ItemsPresenter > WrapPanel, 
+    ^[TabStripPlacement=Right] /template/ ItemsPresenter#PART_ItemsPresenter > WrapPanel">
+      <Setter Property="Orientation" Value="Vertical"></Setter>
     </Style>
   </ControlTheme>
 </ResourceDictionary>
